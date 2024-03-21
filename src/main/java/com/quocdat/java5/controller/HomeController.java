@@ -11,4 +11,5 @@ public class HomeController {
     public String doGetViewIndex(){
         return "user/index";
     }
+
 }
