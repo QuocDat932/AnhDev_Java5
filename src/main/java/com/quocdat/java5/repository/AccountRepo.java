@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepo extends JpaRepository<AccountE, Integer> {
 
-    @Query(value = "SELECT sys_id, user_name, tk, role_id FROM sys_user WHERE tk = ?1 AND mk = ?2", nativeQuery = true)
+    @Query(value = "SELECT sys_id, user_name, tk, mk, role_id FROM sys_user WHERE tk = ?1 AND mk = ?2", nativeQuery = true)
     AccountE getAccountEByTkAndMk(String tk, String mk);
 }

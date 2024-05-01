@@ -1,5 +1,7 @@
 package com.quocdat.java5.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,7 +25,12 @@ public class AccountE implements Serializable {
     @Column(name= "tk")
     private String tk;
 
+    @JsonIgnore
+    @Column(name = "mk")
+    private String mk;
+
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer", "mk"})
     private RoleE role;
 }
