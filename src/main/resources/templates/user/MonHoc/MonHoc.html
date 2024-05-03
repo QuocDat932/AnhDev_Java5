@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/index :: dynamic(~{::main})}">
+<head>
+</head>
+<body>
+<div th:fragment="main">
+    <script th:src="@{/user/layout-js/user/MonHoc/MonHoc.js}"></script>
+    <script>
+        const serviceMonHoc = new MonHoc()
+        $(document).ready(() => {
+            serviceMonHoc.loadInit()
+        })
+    </script>
+    <h1>Môn Học</h1>
+</div>
+</body>
+</html>

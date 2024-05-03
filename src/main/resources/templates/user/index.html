@@ -1,11 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(view)">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/user/layout-css/user/index.css}">
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/user/layout-js/user/index.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Home Index</title>
+    <script>
+        const service = new Index()
+        $(document).ready(() => {
+            service.loadInit();
+        })
+    </script>
 </head>
 <body>
-    <h1>Xin Chào Các Bạn Đang Học Java5</h1>
-    <h1>Mình là AnhDev</h1>
+<div>
+    <!--  Start Sidebar  -->
+    <aside class="position-fixed top-0 start-0">
+        <header class="position-relative">
+            <div class="image-text d-flex align-items-center">
+                <span class="image d-flex align-items-center">
+                    <img th:src="@{/assets/images/logo.png}" alt="VitaminCode">
+                </span>
+                <div class="text header-text d-flex flex-column">
+                    <span class="name">VITAMINCODE</span>
+                    <span class="slogan">Lập trình và cuộc sống</span>
+                </div>
+            </div>
+            <i class="bi bi-caret-left-fill toggle" onclick="service.btnControlSidebar_click()"></i>
+        </header>
+        <main>
+            <div class="menu">
+                <ul class="menu-links p-0 m-0">
+                    <li class="nav-link-sidebar">
+                        <a href="index" th:class="(${currentView} == 'home') ? 'active' : ''">
+                            <i class="bi bi-house"></i>
+                            <span class="text nav-text">Trang Chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-link-sidebar">
+                        <a href="ThongKe" th:class="(${currentView} == 'ThongKe') ? 'active' : ''">
+                            <i class="bi bi-speedometer2"></i>
+                            <span class="text nav-text">Thống kê</span>
+                        </a>
+                    </li>
+                    <li class="nav-link-sidebar">
+                        <a href="BangDiem" th:class="(${currentView} == 'BangDiem') ? 'active' : ''">
+                            <i class="bi bi-journal-bookmark"></i>
+                            <span class="text nav-text">Bảng điểm</span>
+                        </a>
+                    </li>
+                    <li class="nav-link-sidebar">
+                        <a href="SinhVien" th:class="(${currentView} == 'SinhVien') ? 'active' : ''">
+                            <i class="bi bi-people"></i>
+                            <span class="text nav-text">Sinh viên</span>
+                        </a>
+                    </li>
+                    <li class="nav-link-sidebar">
+                        <a href="LichHoc" th:class="(${currentView} == 'LichHoc') ? 'active' : ''">
+                            <i class="bi bi-calendar3"></i>
+                            <span class="text nav-text">Lịch học</span>
+                        </a>
+                    </li>
+                    <li class="nav-link-sidebar">
+                        <a href="MonHoc" th:class="(${currentView} == 'MonHoc') ? 'active' : ''">
+                            <i class="bi bi-book"></i>
+                            <span class="text nav-text">Môn học</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <ul class="p-0 m-0">
+                    <li class="nav-link-sidebar">
+                        <a href="/">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <span class="text nav-text">Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </aside>
+    <!--  End Sidebar  -->
+    <!--  Start Home  -->
+    <article>
+        <!--  Start Header  -->
+        <header class="d-flex align-items-center justify-content-end">
+            <div class="drop position-relative d-inline-block">
+                <span>Tùy chọn<i class="bi bi-gear ps-3"></i></span>
+                <div class="drop-content">
+                    <a href=""><i class="bi bi-key pe-3 fs-5"></i>Đổi mật khẩu</a>
+                    <a href="/"><i class="bi bi-box-arrow-left pe-3 fs-5"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </header>
+        <!--  End Header  -->
+        <!--  Start Main  -->
+        <main>
+            <div th:replace="${view}"></div>
+        </main>
+        <!--  End Main  -->
+    </article>
+    <!--  End Home  -->
+</div>
+
 </body>
 </html>

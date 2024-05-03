@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/index :: dynamic(~{::main})}">
+<head>
+</head>
+<body>
+    <div th:fragment="main">
+        <script th:src="@{/user/layout-js/user/ThongKe/ThongKe.js}"></script>
+        <script>
+            const serviceThongKe = new ThongKe()
+            $(document).ready(() => {
+                serviceThongKe.loadInit()
+            })
+        </script>
+        <h1>Thống kê</h1>
+    </div>
+</body>
+</html>

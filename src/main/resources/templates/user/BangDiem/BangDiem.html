@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/index :: dynamic(~{::main})}">
+<head>
+</head>
+<body>
+<div th:fragment="main">
+    <script th:src="@{/user/layout-js/user/BangDiem/BangDiem.js}"></script>
+    <script>
+        const serviceBangDiem = new BangDiem()
+        $(document).ready(() => {
+            serviceBangDiem.loadInit()
+        })
+    </script>
+    <h1>Bảng Điểm</h1>
+</div>
+</body>
+</html>

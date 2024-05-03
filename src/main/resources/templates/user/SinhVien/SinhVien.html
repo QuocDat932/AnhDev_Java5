@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/index :: dynamic(~{::main})}">
+<head>
+</head>
+<body>
+<div th:fragment="main">
+    <script th:src="@{/user/layout-js/user/SinhVien/SinhVien.js}"></script>
+    <script>
+        const serviceSinhVien = new SinhVien()
+        $(document).ready(() => {
+            serviceSinhVien.loadInit()
+        })
+    </script>
+    <h1>Sinh Viên</h1>
+</div>
+</body>
+</html>
