@@ -12,6 +12,7 @@
     <script th:src="@{/user/layout-js/pages/login.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" th:href="@{/assets/icons/logo.png}">
     <script>
         const services = new Login();
     </script>
@@ -19,31 +20,34 @@
 </head>
 <body>
 <div class="row container-fluid h-100 align-items-center justify-content-center">
-    <div class="col-lg-3 col-md-8 col-sm-12">
-        <div class="form-login">
-            <p class="m-0 p-0 text-center" style="font-size: 4rem">
-                <i class="bi bi-person-circle p-0 m-0"></i>
-            </p>
-            <p class="m-0 p-0 fs-1 fw-bold text-center pb-3 border-bottom border-black">LOGIN</p>
-            <form>
-                <div class="my-3">
-                    <label for="username" class="form-label fw-bold">Username</label>
-                    <input type="text" name="username" id="username" class="form-control"
-                           placeholder="Enter your username">
-                </div>
-                <div class="mb-3 position-relative">
-                    <label for="password" class="form-label fw-bold">Password</label>
-                    <input type="password" name="password" id="password" class="form-control"
-                           placeholder="Enter your password" onkeypress="services.checkKeyPress(event)">
-                    <button type="button" class="btn position-absolute bottom-0 end-0 btnShowPassword"
-                            onclick="services.btnShowPassword_click()"><i class="bi bi-eye-fill"
-                                                                          id="toggleShowPassword"></i></button>
-                </div>
-                <p class="m-0 p-0 pb-3 fs-1 text-center border-bottom border-black"></p>
-                <div class="my-3 text-center">
-                    <button type="button" class="btn btn-login" onclick="services.btnLogin_click()">Login</button>
-                </div>
-            </form>
+    <div class="col-lg-7 col-md-8 col-sm-12">
+        <div class="banner-login">
+            <div class="form-login">
+                <img th:src="@{/assets/images/slogan.png}" alt="" class="slogan">
+                <p class="m-0 p-0 fs fw-bold text-center pb-3 border-bottom border-black">Login to Educate</p>
+                <form>
+                    <div class="my-3">
+                        <label for="username" class="form-label fw-bold">Username</label>
+                        <input type="text" name="username" id="username" class="form-control"
+                               placeholder="Enter your username">
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <label for="password" class="form-label fw-bold">Password</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                               placeholder="Enter your password" onkeypress="services.checkKeyPress(event)">
+                        <button type="button" class="btn position-absolute bottom-0 end-0 btnShowPassword"
+                                onclick="services.btnShowPassword_click()"><i class="bi bi-eye-fill"
+                                                                              id="toggleShowPassword"></i></button>
+                    </div>
+                    <p class="m-0 p-0 pb-3 fs-1 text-center border-bottom border-black"></p>
+                    <div class="my-3 text-center">
+                        <button type="button" class="btn btn-login w-100" onclick="services.btnLogin_click()">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="img-login">
+                <img th:src="@{/assets/images/login_img.png}" alt="" class="background">
+            </div>
         </div>
     </div>
 </div>

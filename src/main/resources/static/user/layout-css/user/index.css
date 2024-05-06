@@ -52,7 +52,7 @@ aside header .toggle {
     font-size: 1.15rem;
     cursor: pointer;
     transition: var(--tran-03);
-    border: 1px solid var(--color-border)
+    border: 2px solid var(--color-border)
 }
 aside main {
     margin-top: 10px;
@@ -137,7 +137,7 @@ article header .drop .drop-content {
     display: none;
     position: absolute;
     top: calc(100% + 7px);
-    right: 0%;
+    right: 0;
     background-color: var(--color-sidebar);
     min-width: 200px;
     z-index: 1;

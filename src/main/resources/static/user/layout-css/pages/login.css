@@ -1,9 +1,17 @@
 @import url('../../../css/style.css');
+.banner-login {
+    background-color: var(--color-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    height: 70vh;
+}
+
 .form-login {
-    background-color: var(--color-component);
-    border: 1px solid var(--color-header);
     border-radius: 15px;
     padding: 1.5rem;
+    width: 100%;
 }
 
 .form-control {
@@ -50,4 +58,41 @@
 
 .btnShowPassword:focus {
     border: none;
+}
+.background {
+    height: 70vh;
+    width: auto;
+    border-radius: 0 15px 15px 0;
+}
+.slogan {
+    margin-bottom: 30px;
+    max-width: 100%;
+    display: none;
+}
+.fs {
+    font-size: 2.5rem;
+    line-height: 60px;
+}
+@media (max-width: 1453px) {
+    .background {
+        display: none;
+    }
+    .slogan {
+        display: block;
+    }
+}
+@media (min-width: 991px) and (max-width: 1453px) {
+    .fs {
+        font-size: 2.5rem;
+    }
+}
+@media (min-width: 380px) and (max-width: 453px) {
+    .fs {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 380px) {
+    .fs {
+        font-size: 1rem;
+    }
 }
