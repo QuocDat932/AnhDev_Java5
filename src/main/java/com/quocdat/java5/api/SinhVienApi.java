@@ -1,8 +1,7 @@
 package com.quocdat.java5.api;
 
-import com.quocdat.java5.entity.SinhVien;
+import com.quocdat.java5.dto.SinhVienDto;
 import com.quocdat.java5.service.SinhVienService;
-import com.sun.source.tree.TryTree;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,7 @@ public class SinhVienApi {
 
     @Autowired
     private SinhVienService sinhVienServ;
+
     @GetMapping("/getSinhVienByMSSV")
     public ResponseEntity<?> doGetSinhVienByMSSV(@RequestParam("mssv") String mssv){
         Map<String, Object> result = new HashMap();
@@ -35,7 +35,7 @@ public class SinhVienApi {
     }
 
     @PostMapping("/saveSinhVien")
-    public ResponseEntity<?> doPostSaveSinhVien(@RequestBody SinhVien sinhVien){
+    public ResponseEntity<?> doPostSaveSinhVien(@RequestBody SinhVienDto sinhVien){
         Map<String, Object> result = new HashMap();
         try {
             result.put("status", true);

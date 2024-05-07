@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,7 +22,7 @@ public class SinhVien implements Serializable {
     private String hoVaTen;
 
     @Column(name = "gioi_tinh")
-    private boolean gioi_tinh;
+    private boolean gioiTinh;
 
     @Column(name = "chuyen_nganh")
     private String chuyenNganh;
