@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SinhVienRepo extends JpaRepository<SinhVien, String> {
     SinhVien getSinhViensByMssv(String mssv);
+
+    boolean existsSinhVienByMssv(String mssv);
 }
