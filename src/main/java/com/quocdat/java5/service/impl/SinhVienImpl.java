@@ -3,6 +3,8 @@ package com.quocdat.java5.service.impl;
 import com.quocdat.java5.dto.SinhVienDto;
 import com.quocdat.java5.entity.HocKi;
 import com.quocdat.java5.entity.SinhVien;
+import com.quocdat.java5.exception.AppException;
+import com.quocdat.java5.exception.ErrorCode;
 import com.quocdat.java5.mapper.SinhVienMapper;
 import com.quocdat.java5.repository.SinhVienRepo;
 import com.quocdat.java5.service.SinhVienService;
@@ -19,17 +21,21 @@ public class SinhVienImpl implements SinhVienService {
     final SinhVienRepo repo;
 
     @Override
-    public SinhVienDto getSinhVienByMSSV(String mssv) throws SQLException {
+    public SinhVienDto getSinhVienByMSSV(String mssv) throws SQLException, AppException {
+        if (!repo.existsSinhVienByMssv(mssv))
+            throw new AppException(ErrorCode.STUDENT_NOT_EXIST);
         SinhVienDto sinhVienDto = SinhVienMapper.mapToSinhVienDto(repo.getSinhViensByMssv(mssv));
         return sinhVienDto;
     }
 
     @Transactional
     @Override
-    public SinhVienDto postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException {
+    public SinhVienDto postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException, AppException {
         SinhVien sinhVienE = SinhVienMapper.mapToSinhVien(sinhVienDto);
         HocKi hocKi = SinhVienMapper.mapToHocKi(sinhVienDto.getHocKi());
         sinhVienE.setHocKi(hocKi);
+        if (repo.existsSinhVienByMssv(sinhVienDto.getMssv()))
+            throw new AppException(ErrorCode.STUDENT_EXISTED);
         SinhVien savedSinhVien = repo.saveAndFlush(sinhVienE);
         return SinhVienMapper.mapToSinhVienDto(savedSinhVien);
     }
