@@ -3,15 +3,41 @@
 <head>
 </head>
 <body>
-    <div th:fragment="main">
-        <script th:src="@{/user/layout-js/user/ThongKe/ThongKe.js}"></script>
-        <script>
-            const serviceThongKe = new ThongKe()
-            $(document).ready(() => {
-                serviceThongKe.loadInit()
-            })
-        </script>
-        <h1>Thống kê</h1>
+<div th:fragment="main">
+    <script th:src="@{/user/layout-js/user/ThongKe/ThongKe.js}"></script>
+    <script>
+        const serviceThongKe = new ThongKe()
+        $(document).ready(() => {
+            serviceThongKe.loadInit()
+        })
+    </script>
+    <div class="row">
+        <div class="col-2 d-flex align-items-center justify-content-center">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="selectHocKy" class="col-form-label fw-bold fs-5">Học kỳ:</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" id="selectHocKy">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="selectMonHoc" class="col-form-label fw-bold fs-5">Môn học:</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" id="selectMonHoc">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto d-flex align-items-center justify-content-center">
+            <button class="btn btn-success">Tìm</button>
+        </div>
     </div>
+</div>
 </body>
 </html>

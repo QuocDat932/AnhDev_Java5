@@ -4,6 +4,7 @@
 </head>
 <body>
     <div th:fragment="main">
+        <link rel="stylesheet" th:href="@{/user/layout-css/user/home.css}">
         <script th:src="@{/user/layout-js/user/Home.js}"></script>
         <script>
             const serviceHome = new Home()
@@ -11,7 +12,23 @@
                 serviceHome.loadInit()
             })
         </script>
-        <h1>Trang Chủ</h1>
+        <div class="container">
+            <div class="col-md-8">
+                <div class="planner">
+                    <div class="calendar-grid" id="calendar"></div>
+                    <div id="addTaskModal" class="taskModal">
+                        <span class="close" onclick="serviceHome.closeAddTaskModal()"><i class="bi bi-x-lg"></i></span>
+                        <h2>ADD TASK</h2>
+                        <input type="date" id="task-date">
+                        <input type="text" id="task-desc" placeholder="Description">
+                        <button class="add-task-btn" onclick="serviceHome.showAddTaskModal()">Add task</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
     </div>
 </body>
 </html>

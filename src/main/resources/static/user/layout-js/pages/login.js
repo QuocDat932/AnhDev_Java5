@@ -29,6 +29,7 @@ class Login {
             $('body').removeClass('swal2-height-auto')
             return;
         }
+        localStorage.setItem('sys_id', response.sysId)
         window.location.href = '/index'
     }
     checkKeyPress = (event) => {
