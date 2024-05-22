@@ -11,7 +11,98 @@
             serviceSinhVien.loadInit()
         })
     </script>
-    <h1>Sinh Viên</h1>
+    <div class="row m-0 p-0">
+        <div class="col-md-8">
+            <h2 class="text-center">Danh sách sinh viên</h2>
+            <div class="row mb-3">
+                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                    <label for="idFilterMssv" class="form-label m-0 fw-bold">MSSV</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="idFilterMssv" class="form-control">
+                </div>
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <label for="idFilterTen" class="form-label m-0 fw-bold">Tên sinh viên</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="idFilterTen" class="form-control">
+                </div>
+                <div class="col-md-1 d-flex justify-content-center align-items-center">
+                    <label for="idFilterChuyenNganh" class="form-label m-0 fw-bold">CN</label>
+                </div>
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <select id="idFilterChuyenNganh" class="form-select"></select>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-dark rounded rounded-circle"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+            <div>
+                <table class="table table-responsive table-bordered table-hover border-black">
+                    <thead class="text-center">
+                    <th>No.</th>
+                    <th>MSSV</th>
+                    <th>Họ tên</th>
+                    <th>Chuyên ngành</th>
+                    <th>Giới tính</th>
+                    <th>Học kỳ</th>
+                    </thead>
+                    <tbody class="tableSinhVien"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2 class="text-center">Thông tin chi tiết</h2>
+            <div class="mb-3">
+                <label for="idMssv" class="form-label fw-bold">Mã số sinh viên</label>
+                <input type="text" class="form-control" id="idMssv">
+            </div>
+            <div class="mb-3">
+                <label for="idHoTen" class="form-label fw-bold">Họ tên</label>
+                <input type="text" class="form-control" id="idHoTen">
+            </div>
+            <div class="mb-3">
+                <label for="idChuyenNganh" class="form-label fw-bold">Chuyên ngành</label>
+                <input type="text" class="form-control" id="idChuyenNganh">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="idHocKy" class="form-label fw-bold">Học kỳ</label>
+                        <input type="text" class="form-control" id="idHocKy">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Giới tính</label>
+                        <div class="d-flex align-items-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="gioiTinh" type="radio" id="idNam" checked>
+                                <label class="form-check-label" for="idNam">Nam</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="gioiTinh" type="radio" id="idNu">
+                                <label class="form-check-label" for="idNu">Nữ</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox"id="idXacNhan" onchange="serviceMonHoc.verifyForm()">
+                    <label class="form-check-label" for="idXacNhan">
+                        Xác nhận
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3 text-end">
+                <button class="btn btn-primary mb-3" onclick=""><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
+                <button class="btn btn-success mb-3" onclick=""><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                <button class="btn btn-danger mb-3"  onclick=""><i class="fa-solid fa-trash me-3"></i>Xóa</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

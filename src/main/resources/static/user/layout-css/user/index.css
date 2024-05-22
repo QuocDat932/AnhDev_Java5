@@ -119,21 +119,21 @@ aside.close ~ article {
     left: 90px;
     width: calc(100% - 90px);
 }
-article header {
+article > header {
     padding: 0.88rem 1rem;
     width: 100%;
     background-color: var(--color-header);
     height: calc(60px + 0.88rem * 2);
     border: 1px solid var(--color-border)
 }
-article header .drop span {
+article > header .drop span {
     background-color: var(--color-background);
     padding: 10px;
     border-radius: 5px;
     height: 100%;
     font-size: 1.1rem;
 }
-article header .drop .drop-content {
+article > header .drop .drop-content {
     display: none;
     position: absolute;
     top: calc(100% + 7px);
@@ -143,20 +143,20 @@ article header .drop .drop-content {
     z-index: 1;
     border-radius: 10px;
 }
-article header .drop .drop-content a {
+article > header .drop .drop-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-article header .drop .drop-content a:hover {
+article > header .drop .drop-content a:hover {
     background-color: #ddd;
     border-radius: 10px;
 }
-article header .drop:hover .drop-content {
+article > header .drop:hover .drop-content {
     display: block;
 }
-article header .drop:hover span {
+article > header .drop:hover span {
     background-color: var(--color-component);
 }
 article main {

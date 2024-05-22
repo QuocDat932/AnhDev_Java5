@@ -4,6 +4,7 @@
 </head>
 <body>
     <div th:fragment="main">
+        <link rel="stylesheet" th:href="@{/user/layout-css/user/home.css}">
         <script th:src="@{/user/layout-js/user/Home.js}"></script>
         <script>
             const serviceHome = new Home()
@@ -11,7 +12,64 @@
                 serviceHome.loadInit()
             })
         </script>
-        <h1>Trang Chủ</h1>
+        <div class="row m-0 p-0">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <h2 class="text-center">Lịch làm việc</h2>
+                <div class="row m-0 p-0 text-center">
+                    <div class="col-2">
+                        <i class="fas fa-chevron-left fs-3" onclick="serviceHome.btnPrevMonth()"></i>
+                    </div>
+                    <div class="col-8">
+                        <h3 id="title-calendar" class="m-0">
+                            Tháng 5 - 2024
+                        </h3>
+                    </div>
+                    <div class="col-2 fs-3">
+                        <i class="fas fa-chevron-right" onclick="serviceHome.btnNextMonth()"></i>
+                    </div>
+                </div>
+                <div class="planner overflow-x-auto">
+                    <div class="calendar-grid" id="calendar"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <h2 class="text-center">Thông tin chi tiết</h2>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="taskColor" class="col-form-label fw-bold">Màu</label>
+                    </div>
+                    <div class="col-1">
+                        <input type="color" id="taskColor" class="form-control p-0 m-0">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="taskName" class="form-label fw-bold">Tên</label>
+                    <input type="text" class="form-control" id="taskName">
+                </div>
+                <div class="mb-3">
+                    <label for="taskDate" class="form-label fw-bold">Ngày</label>
+                    <input type="date" class="form-control" id="taskDate">
+                </div>
+                <div class="mb-3">
+                    <label for="taskDesc" class="form-label fw-bold">Nội dung</label>
+                    <textarea class="form-control" id="taskDesc" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"id="idXacNhan" onchange="serviceMonHoc.verifyForm()">
+                        <label class="form-check-label" for="idXacNhan">
+                            Xác nhận
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3 text-end">
+                    <button class="btn btn-primary mb-3" onclick="serviceHome.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
+                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(true)"><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(false)"><i class="fa-solid fa-plus me-3"></i>Thêm</button>
+                    <button class="btn btn-danger mb-3"  onclick="serviceHome.deleteTask()"><i class="fa-solid fa-trash me-3"></i>Xóa</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

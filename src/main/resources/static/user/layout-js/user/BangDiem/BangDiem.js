@@ -1,5 +1,9 @@
 class BangDiem {
+    listResult = []
     loadInit = () => {
-        console.log('Service BangDiem')
+
+    }
+    getListResult = async () => {
+
     }
 }
