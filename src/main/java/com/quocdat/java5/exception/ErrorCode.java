@@ -2,8 +2,9 @@ package com.quocdat.java5.exception;
 
 public enum ErrorCode {
     STUDENT_EXISTED(1001, "Student existed"),
-    STUDENT_NOT_EXIST(1002, "Student not exist")
-    ;
+    STUDENT_NOT_EXIST(1002, "Student not exist"),
+    USER_NOT_EXISTED(1003, "User not exist"),
+    UNAUTHENTICATED(1004, "Unauthenticated"),;
 
     private int code;
     private String message;

@@ -1,7 +1,8 @@
 package com.quocdat.java5.api;
 
-import com.quocdat.java5.dto.ApiResponse;
-import com.quocdat.java5.dto.SinhVienDto;
+import com.quocdat.java5.dto.response.ApiResponse;
+import com.quocdat.java5.dto.request.SinhVienDto;
+import com.quocdat.java5.exception.AppException;
 import com.quocdat.java5.service.SinhVienService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -19,6 +22,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SinhVienApi {
 
     private final SinhVienService sinhVienServ;
+
+    @GetMapping("/getAllSinhVien")
+    public ApiResponse<List<SinhVienDto>> getAllSinhVien() {
+        ApiResponse<List<SinhVienDto>> result = new ApiResponse<>();
+        try {
+            result.setSuccess(true);
+            result.setPayload(sinhVienServ.getAllSinhVien());
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setPayload(null);
+            result.setError(e.getMessage());
+        }
+        return result;
+    }
 
     @GetMapping("/getSinhVienByMSSV")
     public ApiResponse<SinhVienDto> doGetSinhVienByMSSV(@RequestParam("mssv") String mssv) {
@@ -41,9 +58,7 @@ public class SinhVienApi {
         try {
             result.setSuccess(true);
             result.setPayload(sinhVienServ.postSaveSinhVien(sinhVien));
-            System.out.println(sinhVienServ.postSaveSinhVien(sinhVien));
             result.setId(sinhVien.getMssv());
-            System.out.println(sinhVien.getMssv());
         } catch (Exception e) {
             result.setSuccess(false);
             result.setPayload(null);

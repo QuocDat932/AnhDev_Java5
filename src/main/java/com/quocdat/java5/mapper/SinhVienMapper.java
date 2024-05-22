@@ -1,6 +1,6 @@
 package com.quocdat.java5.mapper;
 
-import com.quocdat.java5.dto.SinhVienDto;
+import com.quocdat.java5.dto.request.SinhVienDto;
 import com.quocdat.java5.entity.HocKi;
 import com.quocdat.java5.entity.SinhVien;
 
