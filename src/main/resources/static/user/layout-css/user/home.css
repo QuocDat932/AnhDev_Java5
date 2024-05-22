@@ -3,13 +3,15 @@
 .planner {
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     padding: 20px;
+    height: 700px;
+    transition: all var(--tran-03) ease;
 }
 .add-task-btn {
     position: fixed;
@@ -27,4 +29,51 @@
 }
 .add-task-btn:hover {
     background-color: #42424242;
+}
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    overflow-x: hidden;
+    box-sizing: content-box;
+}
+.task {
+    color: #fff;
+    padding: 2px;
+    margin-top: 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-overflow: clip;
+    font-size: 0.8rem;
+    height: 20px;
+    width: 88%;
+    cursor: pointer;
+    transition: all var(--tran-03) ease;
+}
+.task:hover {
+    opacity: 0.7;
+}
+.fas {
+    cursor: pointer;
+    padding: 10px;
+}
+.planner::-webkit-scrollbar {
+    display: none;
+}
+.day-name ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.day-name ul li {
+    margin: 0 10px;
 }
