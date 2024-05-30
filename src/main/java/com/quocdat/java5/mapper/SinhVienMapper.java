@@ -1,37 +1,38 @@
 package com.quocdat.java5.mapper;
 
-import com.quocdat.java5.dto.request.SinhVienDto;
-import com.quocdat.java5.entity.HocKi;
-import com.quocdat.java5.entity.SinhVien;
+import com.quocdat.java5.dto.request.SinhVienRequestDto;
+import com.quocdat.java5.dto.response.SinhVienResponseDto;
+import com.quocdat.java5.entity.HocKiE;
+import com.quocdat.java5.entity.SinhVienE;
 
 public class SinhVienMapper {
-    public static SinhVienDto mapToSinhVienDto(SinhVien sinhVien) {
-        String maHocKi = mapToHocKiE(sinhVien.getHocKi());
-        return new SinhVienDto(
-                sinhVien.getMssv(),
-                sinhVien.getHoVaTen(),
-                sinhVien.isGioiTinh(),
-                sinhVien.getChuyenNganh(),
+    public static SinhVienResponseDto mapToSinhVienDto(SinhVienE sinhVienE) {
+        String maHocKi = mapToHocKiE(sinhVienE.getHocKiE());
+        return new SinhVienResponseDto(
+                sinhVienE.getMssv(),
+                sinhVienE.getHoVaTen(),
+                sinhVienE.isGioiTinh(),
+                sinhVienE.getChuyenNganh(),
                 maHocKi
         );
     }
 
-    public static SinhVien mapToSinhVien(SinhVienDto sinhVienDto) {
-        HocKi hocKi = mapToHocKi(sinhVienDto.getHocKi());
-        return new SinhVien(
-                sinhVienDto.getMssv(),
-                sinhVienDto.getHoVaTen(),
-                sinhVienDto.isGioiTinh(),
-                sinhVienDto.getChuyenNganh(),
-                hocKi
+    public static SinhVienE mapToSinhVien(SinhVienRequestDto sinhVienRequestDto) {
+        HocKiE hocKiE = mapToHocKi(sinhVienRequestDto.getHocKi());
+        return new SinhVienE(
+                sinhVienRequestDto.getMssv(),
+                sinhVienRequestDto.getHoVaTen(),
+                sinhVienRequestDto.isGioiTinh(),
+                sinhVienRequestDto.getChuyenNganh(),
+                hocKiE
         );
     }
 
-    public static HocKi mapToHocKi(String maHk) {
-        return new HocKi(maHk);
+    public static HocKiE mapToHocKi(String maHk) {
+        return new HocKiE(maHk);
     }
 
-    static String mapToHocKiE(HocKi hocKi) {
-        return hocKi.getMaHk();
+    static String mapToHocKiE(HocKiE hocKiE) {
+        return hocKiE.getMaHk();
     }
 }

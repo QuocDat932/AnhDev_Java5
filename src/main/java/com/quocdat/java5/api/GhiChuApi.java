@@ -1,7 +1,7 @@
 package com.quocdat.java5.api;
 
 import com.quocdat.java5.dto.response.ApiResponse;
-import com.quocdat.java5.dto.GhiChuDto;
+import com.quocdat.java5.dto.request.GhiChuDto;
 import com.quocdat.java5.service.GhiChuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

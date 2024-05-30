@@ -11,9 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(schema = "project_final_java05", name = "sinh_vien")
-public class SinhVien implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class SinhVienE {
     @Id
     @Column(name = "mssv")
     private String mssv;
@@ -30,5 +28,5 @@ public class SinhVien implements Serializable {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ma_hk", referencedColumnName = "ma_hk")
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-    private HocKi hocKi;
+    private HocKiE hocKiE;
 }

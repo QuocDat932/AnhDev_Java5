@@ -1,30 +1,30 @@
 package com.quocdat.java5.mapper;
 
-import com.quocdat.java5.dto.GhiChuDto;
+import com.quocdat.java5.dto.request.GhiChuDto;
 import com.quocdat.java5.entity.AccountE;
-import com.quocdat.java5.entity.GhiChu;
+import com.quocdat.java5.entity.GhiChuE;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class GhiChuMapper {
-    public static GhiChuDto mapToGhiChuDto(GhiChu ghiChu) {
+    public static GhiChuDto mapToGhiChuDto(GhiChuE ghiChuE) {
         return new GhiChuDto(
-                ghiChu.getSysId(),
-                ghiChu.getTenGhiChu(),
-                ghiChu.getNoiDung(),
-                ghiChu.getNgay(),
-                ghiChu.getMauSac(),
-                ghiChu.getSysIdUser()
+                ghiChuE.getSysId(),
+                ghiChuE.getTenGhiChu(),
+                ghiChuE.getNoiDung(),
+                ghiChuE.getNgay(),
+                ghiChuE.getMauSac(),
+                ghiChuE.getSysIdUser()
         );
     }
-    public static List<GhiChuDto> mapToListGhiChuDto(List<GhiChu> ghiChuList) {
-        return ghiChuList.stream()
+    public static List<GhiChuDto> mapToListGhiChuDto(List<GhiChuE> ghiChuEList) {
+        return ghiChuEList.stream()
                 .map(e -> mapToGhiChuDto(e))
                 .collect(Collectors.toList());
     }
-    public static GhiChu mapToGhiChu(GhiChuDto ghiChuDto) {
-        return new GhiChu(
+    public static GhiChuE mapToGhiChu(GhiChuDto ghiChuDto) {
+        return new GhiChuE(
                 ghiChuDto.getSysId(),
                 ghiChuDto.getTenGhiChu(),
                 ghiChuDto.getNoiDung(),

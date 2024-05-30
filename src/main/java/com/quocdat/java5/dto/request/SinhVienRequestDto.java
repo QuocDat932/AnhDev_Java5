@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SinhVienDto {
+public class SinhVienRequestDto {
     private String mssv;
     private String hoVaTen;
     private boolean gioiTinh;

@@ -25,7 +25,7 @@ public class LichSuHocTap implements Serializable {
     @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     @JoinColumn(name = "ma_hk", referencedColumnName = "ma_hk")
-    private HocKi hocKi;
+    private HocKiE hocKiE;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ma_mon_hoc", referencedColumnName = "ma_mon_hoc")

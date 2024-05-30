@@ -18,7 +18,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Entity
 @Table(schema = "project_final_java05", name = "hoc_ki")
-public class HocKi implements Serializable {
+public class HocKiE implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,7 +35,7 @@ public class HocKi implements Serializable {
     private Date ngayKetThuc;
 
     @JsonCreator
-    public HocKi(@JsonProperty("ma_hk") String maHk) {
+    public HocKiE(@JsonProperty("ma_hk") String maHk) {
         this.maHk = maHk;
     }
 }

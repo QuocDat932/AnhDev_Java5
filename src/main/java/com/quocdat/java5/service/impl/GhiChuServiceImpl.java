@@ -1,6 +1,6 @@
 package com.quocdat.java5.service.impl;
 
-import com.quocdat.java5.dto.GhiChuDto;
+import com.quocdat.java5.dto.request.GhiChuDto;
 import com.quocdat.java5.mapper.GhiChuMapper;
 import com.quocdat.java5.repository.GhiChuRepo;
 import com.quocdat.java5.service.GhiChuService;
