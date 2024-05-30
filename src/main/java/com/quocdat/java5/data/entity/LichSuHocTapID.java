@@ -1,7 +1,7 @@
-package com.quocdat.java5.entity;
+package com.quocdat.java5.data.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Embeddable;
+import lombok.Data;
 
 import java.io.Serializable;
 

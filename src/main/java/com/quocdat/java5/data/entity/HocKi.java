@@ -1,4 +1,4 @@
-package com.quocdat.java5.entity;
+package com.quocdat.java5.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

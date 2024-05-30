@@ -1,16 +1,13 @@
 package com.quocdat.java5.service.impl;
 
-import com.quocdat.java5.entity.AccountE;
+import com.quocdat.java5.data.entity.AccountE;
 import com.quocdat.java5.repository.AccountRepo;
 import com.quocdat.java5.service.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

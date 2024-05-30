@@ -1,15 +1,16 @@
-package com.quocdat.java5.entity;
+package com.quocdat.java5.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(schema = "project_final_java05", name = "ghi_chu")
-public class GhiChu {
+public class GhiChuE {
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -1,6 +1,6 @@
 package com.quocdat.java5.repository;
 
-import com.quocdat.java5.entity.AccountE;
+import com.quocdat.java5.data.entity.AccountE;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

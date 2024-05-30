@@ -1,6 +1,6 @@
 package com.quocdat.java5.service;
 
-import com.quocdat.java5.entity.LichSuHocTap;
+import com.quocdat.java5.data.entity.LichSuHocTap;
 
 import java.sql.SQLException;
 import java.util.List;

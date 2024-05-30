@@ -1,6 +1,7 @@
 package com.quocdat.java5.service.impl;
 
-import com.quocdat.java5.dto.GhiChuDto;
+import com.quocdat.java5.data.dto.GhiChuDto;
+import com.quocdat.java5.data.model.GhiChuM;
 import com.quocdat.java5.mapper.GhiChuMapper;
 import com.quocdat.java5.repository.GhiChuRepo;
 import com.quocdat.java5.service.GhiChuService;
@@ -18,9 +19,9 @@ public class GhiChuServiceImpl implements GhiChuService {
     private GhiChuRepo repo;
 
     @Override
-    public List<GhiChuDto> getAllGhiChuBySysIdUser(Long sysIdUser, Long month, Long year) {
-        List<GhiChuDto> listGhiChuDto = GhiChuMapper.mapToListGhiChuDto(repo.findAllBySysIdUser(sysIdUser, month, year));
-        return listGhiChuDto;
+    public List<GhiChuM> getAllGhiChuBySysIdUser(Long sysIdUser, Long month, Long year) {
+        List<GhiChuM> listGhiChuM = GhiChuM.convertListGhiChuEToListGhiChuM(repo.findAllBySysIdUser(sysIdUser, month, year));
+        return listGhiChuM;
     }
 
     @Override

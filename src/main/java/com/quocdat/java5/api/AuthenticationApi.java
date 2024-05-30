@@ -1,11 +1,11 @@
 package com.quocdat.java5.api;
 
 import com.nimbusds.jose.JOSEException;
-import com.quocdat.java5.dto.request.AuthenticationRequestDto;
-import com.quocdat.java5.dto.request.IntrospectRequest;
-import com.quocdat.java5.dto.response.ApiResponse;
-import com.quocdat.java5.dto.response.AuthenticationResponseDto;
-import com.quocdat.java5.dto.response.IntrospectResponse;
+import com.quocdat.java5.data.dto.request.AuthenticationRequestDto;
+import com.quocdat.java5.data.dto.request.IntrospectRequest;
+import com.quocdat.java5.data.dto.response.ApiResponse;
+import com.quocdat.java5.data.dto.response.AuthenticationResponseDto;
+import com.quocdat.java5.data.dto.response.IntrospectResponse;
 import com.quocdat.java5.exception.AppException;
 import com.quocdat.java5.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.quocdat.java5.dto.response;
+package com.quocdat.java5.data.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

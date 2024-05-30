@@ -1,4 +1,4 @@
-package com.quocdat.java5.entity;
+package com.quocdat.java5.data.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

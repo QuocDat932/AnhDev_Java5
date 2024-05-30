@@ -1,6 +1,6 @@
 package com.quocdat.java5.service.impl;
 
-import com.quocdat.java5.entity.LichSuHocTap;
+import com.quocdat.java5.data.entity.LichSuHocTap;
 import com.quocdat.java5.repository.LichSuHocTapRepo;
 import com.quocdat.java5.service.LichSuHoctapService;
 import lombok.RequiredArgsConstructor;

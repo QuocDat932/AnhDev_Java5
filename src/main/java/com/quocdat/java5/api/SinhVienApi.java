@@ -1,19 +1,14 @@
 package com.quocdat.java5.api;
 
-import com.quocdat.java5.dto.response.ApiResponse;
-import com.quocdat.java5.dto.request.SinhVienDto;
-import com.quocdat.java5.exception.AppException;
+import com.quocdat.java5.data.dto.request.SinhVienDto;
 import com.quocdat.java5.service.SinhVienService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,47 +19,50 @@ public class SinhVienApi {
     private final SinhVienService sinhVienServ;
 
     @GetMapping("/getAllSinhVien")
-    public ApiResponse<List<SinhVienDto>> getAllSinhVien() {
-        ApiResponse<List<SinhVienDto>> result = new ApiResponse<>();
+    public ResponseEntity<?> getAllSinhVien() {
+        Map<String,Object> result =new HashMap();
         try {
-            result.setSuccess(true);
-            result.setPayload(sinhVienServ.getAllSinhVien());
+            result.put("success",true);
+            result.put("data",sinhVienServ.getAllSinhVien());
+            result.put("message","Call api Success!");
         } catch (Exception e) {
-            result.setSuccess(false);
-            result.setPayload(null);
-            result.setError(e.getMessage());
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api Fail!");
         }
-        return result;
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getSinhVienByMSSV")
-    public ApiResponse<SinhVienDto> doGetSinhVienByMSSV(@RequestParam("mssv") String mssv) {
-        ApiResponse<SinhVienDto> result = new ApiResponse<>();
+    public ResponseEntity<?> doGetSinhVienByMSSV(@RequestParam("mssv") String mssv) {
+        Map<String,Object> result =new HashMap();
         try {
-            result.setSuccess(true);
-            result.setPayload(sinhVienServ.getSinhVienByMSSV(mssv));
+            result.put("success",true);
+            result.put("data",sinhVienServ.getSinhVienByMSSV(mssv));
+            result.put("message","Call api Success!");
         } catch (Exception e) {
-            result.setSuccess(false);
-            result.setPayload(null);
-            result.setError(e.getMessage());
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api Fail!");
             log.error("Error when calling API /java05/sinhvien-api/getSinhVienByMSSV: ", e);
         }
-        return result;
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/saveSinhVien")
-    public ApiResponse<?> doPostSaveSinhVien(@RequestBody SinhVienDto sinhVien) {
-        ApiResponse<SinhVienDto> result = new ApiResponse<>();
+    public ResponseEntity<?> doPostSaveSinhVien(@RequestBody SinhVienDto sinhVien) {
+        Map<String,Object> result =new HashMap();
         try {
-            result.setSuccess(true);
-            result.setPayload(sinhVienServ.postSaveSinhVien(sinhVien));
-            result.setId(sinhVien.getMssv());
+            result.put("success",true);
+            result.put("data",sinhVienServ.postSaveSinhVien(sinhVien));
+            result.put("message","Call api Success!");
         } catch (Exception e) {
-            result.setSuccess(false);
-            result.setPayload(null);
-            result.setError(e.getMessage());
-            log.error("Fail When Call API: Fail when call API /java05/sinhvien-api/saveSinhVien: ", e);
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api Fail!");
+            log.error("Error when calling API /java05/sinhvien-api/saveSinhVien: ", e);
         }
-        return result;
+        return ResponseEntity.ok(result);
+
     }
 }
