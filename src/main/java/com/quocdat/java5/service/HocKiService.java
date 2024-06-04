@@ -5,10 +5,10 @@ import com.quocdat.java5.data.model.HocKiM;
 
 import java.util.List;
 
-public interface HocKyService {
+public interface HocKiService {
     List<HocKiM> getAllHocKy();
 
     int deleteHocKyByMaHocKy(String maHK);
 
-    HocKiM saveHocKy(HocKiDto hocky);
+    HocKiM saveHocKi(HocKiDto hocky);
 }

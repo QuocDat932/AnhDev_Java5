@@ -6,7 +6,6 @@ import com.quocdat.java5.data.dto.request.IntrospectRequest;
 import com.quocdat.java5.data.dto.response.ApiResponse;
 import com.quocdat.java5.data.dto.response.AuthenticationResponseDto;
 import com.quocdat.java5.data.dto.response.IntrospectResponse;
-import com.quocdat.java5.exception.AppException;
 import com.quocdat.java5.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +28,7 @@ public class AuthenticationApi {
         try {
             result.setSuccess(true);
             result.setPayload(authenticationService.authenticate(authenticationRequestDto));
-        } catch (AppException e) {
+        } catch (Exception e) {
             result.setSuccess(false);
             result.setError(e.getMessage());
         }
@@ -37,7 +36,7 @@ public class AuthenticationApi {
     }
 
     @PostMapping("/introspect")
-    public ApiResponse<IntrospectResponse> introspect(@RequestBody IntrospectRequest request) throws AppException, ParseException, JOSEException {
+    public ApiResponse<IntrospectResponse> introspect(@RequestBody IntrospectRequest request) throws ParseException, JOSEException {
        var result = authenticationService.introspect(request);
        return ApiResponse.<IntrospectResponse>builder()
                .success(true)

@@ -1,10 +1,11 @@
 package com.quocdat.java5.service.impl;
 
+import com.quocdat.java5.convert.HocKiConvert;
 import com.quocdat.java5.data.dto.request.HocKiDto;
 import com.quocdat.java5.data.entity.HocKiE;
 import com.quocdat.java5.data.model.HocKiM;
-import com.quocdat.java5.repository.HocKyRepo;
-import com.quocdat.java5.service.HocKyService;
+import com.quocdat.java5.repository.HocKiRepo;
+import com.quocdat.java5.service.HocKiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class HocKyImpl implements HocKyService {
+public class HocKyImpl implements HocKiService {
 
-    private final HocKyRepo repo;
+    private final HocKiRepo repo;
 
     @Override
     public List<HocKiM> getAllHocKy() {
@@ -27,8 +28,9 @@ public class HocKyImpl implements HocKyService {
     }
 
     @Override
-    public HocKiM saveHocKy(HocKiDto hocky) {
-        HocKiE hocKiE = repo.save(hocky);
-        return HocKiM.convertHocKyEToHocKyM(hocKiE);
+    public HocKiM saveHocKi(HocKiDto hocKiDto) {
+        return HocKiM.convertHocKyEToHocKyM(
+                repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
+        );
     }
 }

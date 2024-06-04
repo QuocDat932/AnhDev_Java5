@@ -9,8 +9,6 @@ import com.quocdat.java5.data.dto.request.AuthenticationRequestDto;
 import com.quocdat.java5.data.dto.request.IntrospectRequest;
 import com.quocdat.java5.data.dto.response.AuthenticationResponseDto;
 import com.quocdat.java5.data.dto.response.IntrospectResponse;
-import com.quocdat.java5.exception.AppException;
-import com.quocdat.java5.exception.ErrorCode;
 import com.quocdat.java5.repository.AccountRepo;
 import com.quocdat.java5.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -38,19 +36,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     protected String SECRET_KEY;
 
     @Override
-    public AuthenticationResponseDto authenticate(AuthenticationRequestDto requestDto) throws AppException {
+    public AuthenticationResponseDto authenticate(AuthenticationRequestDto requestDto) throws Exception {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
-        var user = accountRepo.findAccountByTk(requestDto.getUsername()).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        var user = accountRepo.findAccountByTk(requestDto.getUsername()).orElseThrow(() -> new Exception("User not found"));
         boolean authenticated = passwordEncoder.matches(requestDto.getPassword(), user.getMk());
         if (!authenticated) {
-            throw new AppException(ErrorCode.UNAUTHENTICATED);
+            throw new Exception("Username or password is incorrect");
         }
         var token = generateToken(requestDto.getUsername());
         return AuthenticationResponseDto.builder().token(token).authenticated(true).build();
     }
 
     @Override
-    public IntrospectResponse introspect(IntrospectRequest request) throws JOSEException, ParseException, AppException {
+    public IntrospectResponse introspect(IntrospectRequest request) throws JOSEException, ParseException {
         var token = request.getToken();
 
         JWSVerifier jwsVerifier = new MACVerifier(SECRET_KEY.getBytes());

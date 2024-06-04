@@ -1,7 +1,7 @@
 package com.quocdat.java5.api;
 
 import com.quocdat.java5.data.dto.request.HocKiDto;
-import com.quocdat.java5.service.HocKyService;
+import com.quocdat.java5.service.HocKiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/java05/hocki-api")
 public class HocKiApi {
-    private final HocKyService hocKyService;
+    private final HocKiService hocKyService;
 
     @GetMapping("/getAllHocKy")
     public ResponseEntity<?> getAllHocKy() {
@@ -31,12 +31,12 @@ public class HocKiApi {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("saveHocKy")
+    @PostMapping("saveHocKi")
     public ResponseEntity<?> doSaveHocKi(@RequestBody HocKiDto hocKi) {
         Map<String,Object> result =new HashMap();
         try {
             result.put("success",true);
-            result.put("data",hocKyService.saveHocKy(hocKi));
+            result.put("data",hocKyService.saveHocKi(hocKi));
             result.put("message","Call api Success!");
         } catch (Exception e) {
             result.put("success",false);
