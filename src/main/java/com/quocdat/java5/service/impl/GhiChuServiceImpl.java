@@ -2,7 +2,6 @@ package com.quocdat.java5.service.impl;
 
 import com.quocdat.java5.data.dto.GhiChuDto;
 import com.quocdat.java5.data.model.GhiChuM;
-import com.quocdat.java5.mapper.GhiChuMapper;
 import com.quocdat.java5.repository.GhiChuRepo;
 import com.quocdat.java5.service.GhiChuService;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +25,10 @@ public class GhiChuServiceImpl implements GhiChuService {
 
     @Override
     public Boolean saveGhiChu(GhiChuDto ghiChuDto) {
-        GhiChuDto ghiChuDtoResult = GhiChuMapper.mapToGhiChuDto(repo.save(GhiChuMapper.mapToGhiChu(ghiChuDto)));
-        if (!Objects.nonNull(ghiChuDtoResult)) {
-            return false;
-        }
+//        GhiChuDto ghiChuDtoResult = GhiChuMapper.mapToGhiChuDto(repo.save(GhiChuMapper.mapToGhiChu(ghiChuDto)));
+//        if (!Objects.nonNull(ghiChuDtoResult)) {
+//            return false;
+//        }
         return false;
     }
 

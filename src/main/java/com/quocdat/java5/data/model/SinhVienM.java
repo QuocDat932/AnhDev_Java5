@@ -1,6 +1,6 @@
 package com.quocdat.java5.data.model;
 
-import com.quocdat.java5.data.entity.HocKi;
+import com.quocdat.java5.data.entity.HocKiE;
 import com.quocdat.java5.data.entity.SinhVienE;
 import lombok.*;
 
@@ -17,7 +17,7 @@ public class SinhVienM {
     private String hoVaTen;
     private boolean gioiTinh;
     private String chuyenNganh;
-    private HocKi hocKi;
+    private HocKiE hocKi;
 
     public static SinhVienM convertSinhVienEToSinhVienM(SinhVienE sinhVienE){
         return SinhVienM.builder()

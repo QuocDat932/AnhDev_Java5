@@ -32,5 +32,5 @@ public class SinhVienE implements Serializable {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ma_hk", referencedColumnName = "ma_hk")
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-    private HocKi hocKi;
+    private HocKiE hocKi;
 }
