@@ -49,6 +49,23 @@ public class SinhVienApi {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getListChuyenNganh")
+    public ResponseEntity<?> doGetListChuyenNganh() {
+        Map<String,Object> result =new HashMap();
+        try {
+            result.put("success",true);
+            result.put("data",sinhVienServ.getAllChuyenNganh());
+            result.put("message","Call api Success!");
+        } catch (Exception e) {
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api Fail!");
+            log.error("Error when calling API /java05/sinhvien-api/getListChuyenNganh: ", e);
+        }
+
+        return ResponseEntity.ok(result);
+    }
+
     @PostMapping("/saveSinhVien")
     public ResponseEntity<?> doPostSaveSinhVien(@RequestBody SinhVienDto sinhVien) {
         Map<String,Object> result =new HashMap();
@@ -64,5 +81,37 @@ public class SinhVienApi {
         }
         return ResponseEntity.ok(result);
 
+    }
+
+    @PutMapping("/updateSinhVien")
+    public ResponseEntity<?> doPutSinhVien(@RequestBody SinhVienDto sinhVien) {
+        Map<String,Object> result =new HashMap();
+        try {
+            result.put("success",true);
+            result.put("data",sinhVienServ.putUpdateSinhVien(sinhVien));
+            result.put("message","Call api Success!");
+        } catch (Exception e) {
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api Fail!");
+            log.error("Error when calling API /java05/sinhvien-api/updateSinhVien: ", e);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/deleteSinhVienByMssv")
+    public ResponseEntity<?> doDeleteSinhVienByMssv(@RequestParam("mssv") String mssv){
+        Map<String, Object> result = new HashMap();
+        try {
+            result.put("success", true);
+            result.put("data", sinhVienServ.deleteSinhVienByMssv(mssv));
+            result.put("message", "Call api Success!");
+        } catch (Exception e) {
+            result.put("success", false);
+            result.put("data", null);
+            result.put("message", "Call api Fail!");
+            log.error("Error when calling API /java05/sinhvien-api/deleteSinhVienByMssv: ", e);
+        }
+        return ResponseEntity.ok(result);
     }
 }

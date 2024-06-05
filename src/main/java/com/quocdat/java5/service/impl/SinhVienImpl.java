@@ -27,14 +27,37 @@ public class SinhVienImpl implements SinhVienService {
 
     @Override
     public SinhVienM getSinhVienByMSSV(String mssv) throws SQLException {
-        SinhVienM sinhVienM = SinhVienM.convertSinhVienEToSinhVienM(repo.getSinhViensByMssv(mssv));
-        return sinhVienM;
+        return SinhVienM.convertSinhVienEToSinhVienM(repo.getSinhViensByMssv(mssv));
     }
 
     @Transactional
     @Override
     public SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException{
+        if(repo.existsSinhVienByMssv(sinhVienDto.getMssv())) throw new SQLException("Sinh Vien Already Exists");
         return SinhVienM.convertSinhVienEToSinhVienM(
                 repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto)));
+    }
+
+    @Transactional
+    @Override
+    public SinhVienE putUpdateSinhVien(SinhVienDto sinhVienDto) throws SQLException{
+        if(!repo.existsSinhVienByMssv(sinhVienDto.getMssv())) throw new SQLException("Sinh Vien Not Exists");
+        return repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto));
+    }
+
+    @Transactional
+    @Override
+    public Boolean deleteSinhVienByMssv(String mssv) throws SQLException {
+        try {
+            repo.deleteById(mssv);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public List<String> getAllChuyenNganh() throws SQLException {
+        return repo.getAllChuyenNganh();
     }
 }

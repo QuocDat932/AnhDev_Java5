@@ -31,4 +31,29 @@ public interface SinhVienService {
      * @throws SQLException
      */
     SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException;
+
+    /**
+     * Cập nhật thông tin sinh viên
+     *
+     * @param sinhVienDto Đối tượng chứa thông tin sinh viên
+     * @return SinhVienDto
+     * @throws SQLException
+     */
+    SinhVienE putUpdateSinhVien(SinhVienDto sinhVienDto) throws SQLException;
+
+    /**
+     * Xóa thông tin sinh viên
+     *
+     * @param mssv Mã số sinh viên
+     * @return true/false
+     * @throws SQLException
+     */
+
+    Boolean deleteSinhVienByMssv(String mssv) throws SQLException;
+
+    /**
+     * Lấy thông tin tất cả chuyên ngành
+     * @return
+     */
+    List<String> getAllChuyenNganh() throws SQLException;
 }
