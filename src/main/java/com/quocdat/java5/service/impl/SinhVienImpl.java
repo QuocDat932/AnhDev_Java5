@@ -33,7 +33,8 @@ public class SinhVienImpl implements SinhVienService {
 
     @Transactional
     @Override
-    public SinhVienE postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException{
-        return repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto));
+    public SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException{
+        return SinhVienM.convertSinhVienEToSinhVienM(
+                repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto)));
     }
 }

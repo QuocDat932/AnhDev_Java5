@@ -30,5 +30,5 @@ public interface SinhVienService {
      * @return SinhVienDto
      * @throws SQLException
      */
-    SinhVienE postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException;
+    SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException;
 }
