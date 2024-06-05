@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(schema = "project_final_java05", name = "mon_hoc")
-public class MonHoc implements Serializable {
+public class MonHocE implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

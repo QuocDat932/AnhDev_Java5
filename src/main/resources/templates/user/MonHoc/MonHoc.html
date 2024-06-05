@@ -21,6 +21,9 @@
                 <div class="col-md-2">
                     <input type="text" id="idFilterMaMonHoc" class="form-control">
                 </div>
+                <div class="col-md-1">
+                    <button class="btn btn-dark rounded rounded-circle"><i class="fa-solid fa-magnifying-glass" onclick="serviceMonHoc.getMonHocByMaMonHoc()"></i></button>
+                </div>
             </div>
             <div class="tableMonHoc">
                 <table class="table table-responsive table-bordered table-hover border-black" id="tableMonHoc">
@@ -60,11 +63,11 @@
                     <i class="fa-solid fa-rotate-right me-3"></i>
                     Xóa form
                 </button>
-                <button class="btn btn-success mb-3" onclick="" id="idBtnLuu" disabled>
+                <button class="btn btn-success mb-3" onclick="serviceMonHoc.btnLuu_click()" id="idBtnLuu" disabled>
                     <i class="fa-solid fa-download me-3"></i>
                     Lưu
                 </button>
-                <button class="btn btn-danger mb-3"  onclick="" id="idBtnXoa" disabled>
+                <button class="btn btn-danger mb-3"  onclick="serviceMonHoc.btnXoa_click()" id="idBtnXoa" disabled>
                     <i class="fa-solid fa-trash me-3"></i>
                     Xóa
                 </button>

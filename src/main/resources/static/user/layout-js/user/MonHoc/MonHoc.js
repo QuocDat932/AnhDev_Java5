@@ -1,17 +1,14 @@
 class MonHoc {
-    listMonHoc = [{
-        maMonHoc : 'e.maMonHoc',
-        tenMonHoc : 'e.tenMonHoc',
-        soTinChi : 'e.soTinChi'
-    }]
+    listMonHoc = []
+
     loadInit = () => {
-        this.createTableMonHoc()
+        this.getListMonHoc()
     }
     getListMonHoc = async () => {
         let param = {
             maMonHoc : $('#idFilterMaMonHoc').val()
         }
-        let {data : response} = await axios.get()
+        let {data : response} = await axios.get('/java05/monhoc-api/getAllMonHoc')
         if (!response.success) {
             Swal.fire({
                 title: response.message,
@@ -26,6 +23,7 @@ class MonHoc {
             tenMonHoc : e.tenMonHoc,
             soTinChi : e.soTinChi
         }))
+        // console.log(this.listMonHoc)
         this.createTableMonHoc()
     }
     createTableMonHoc = () => {
@@ -40,7 +38,7 @@ class MonHoc {
         let body = ``
         this.listMonHoc.forEach((e, index) => {
             body +=   `<tr>
-                           <td class="bg-transparent text-center">${index}</td> 
+                           <td class="bg-transparent text-center">${index + 1}</td> 
                            <td class="bg-transparent text-center">${e.maMonHoc}</td> 
                            <td class="bg-transparent text-center">${e.tenMonHoc}</td> 
                            <td class="bg-transparent text-center">${e.soTinChi}</td> 
@@ -57,9 +55,11 @@ class MonHoc {
             lengthMenu: [10]
         })
         $('.dt-length').hide()
+        let safe = this
         table.on('dblclick', 'tbody tr', function () {
             let data = table.row(this).data();
-            this.fillDataToForm({
+            // console.log(data)
+            safe.fillDataToForm({
                 maMonHoc : data[1],
                 tenMonHoc : data[2],
                 soTinChi : data[3]
@@ -127,7 +127,8 @@ class MonHoc {
             tenMonHoc : $('#idTenMonHoc').val(),
             soTinChi : $('#idSoTinChi').val()
         }
-        let {data : response} = await axios.post('', dataApiSave)
+        console.log(dataApiSave)
+        let {data : response} = await axios.post('/java05/monhoc-api/postSaveMonHoc', dataApiSave)
         if (!response.success) {
             Swal.fire({
                 title: response.message,
@@ -139,10 +140,11 @@ class MonHoc {
         }
         Swal.fire({
             title: response.message,
-            icon: 'error',
+            icon: 'success',
             showConfirmButton: false,
             timer: 1500
         })
+        this.getListMonHoc()
     }
     btnXoa_click = async () => {
         if (!$('#idMaMonHoc').val()) {
@@ -175,7 +177,7 @@ class MonHoc {
             let param = {
                 maMonHoc : $('#idMaMonHoc').val()
             }
-            let {data: response} = await axios.delete('', {params: param})
+            let {data: response} = await axios.delete('/java05/monhoc-api/deleteByMaMonHoc', {params: param})
             if (!response.success) {
                 Swal.fire({
                     title: response.message,
@@ -191,7 +193,32 @@ class MonHoc {
                 showConfirmButton: false,
                 timer: 1500
             })
-            await this.getListMonHoc()
+            await this.getListMonHoc();
+
+
         });
+    }
+    getMonHocByMaMonHoc = async () => {
+        let param = {
+            maMonHoc : $('#idFilterMaMonHoc').val()
+        }
+        let {data: response} = await axios.get("/java05/monhoc-api/getMonHocByMaMonHoc", {
+            params: param
+        })
+        if (!response.success) {
+            Swal.fire({
+                title: response.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        this.listMonHoc = response.data.map(e => ({
+            maMonHoc : e.maMonHoc,
+            tenMonHoc : e.tenMonHoc,
+            soTinChi : e.soTinChi
+        }))
+        this.createTableMonHoc()
     }
 }
