@@ -1,0 +1,371 @@
+2024-06-07T03:35:08.706+07:00  INFO 34468 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 34468 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:35:08.707+07:00  INFO 34468 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:35:08.733+07:00  INFO 34468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:35:08.733+07:00  INFO 34468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:35:09.204+07:00  INFO 34468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:35:09.206+07:00  INFO 34468 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:35:09.208+07:00  INFO 34468 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:35:09.212+07:00  INFO 34468 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:35:09.214+07:00  INFO 34468 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:35:09.234+07:00  INFO 34468 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:35:09.234+07:00  INFO 34468 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 501 ms
+2024-06-07T03:35:09.291+07:00  INFO 34468 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:35:09.435+07:00  INFO 34468 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:35:09.456+07:00  INFO 34468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:35:09.463+07:00  INFO 34468 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.963 seconds (process running for 1.32)
+2024-06-07T03:35:31.806+07:00  INFO 34468 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:35:31.807+07:00  INFO 34468 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:35:31.808+07:00  INFO 34468 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-07T03:35:31.820+07:00  INFO 34468 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/ with handler com.quocdat.java5.controller.HomeController#doGetViewIndex(HttpServletRequest).
+2024-06-07T03:35:31.983+07:00  INFO 34468 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/favicon.ico with handler ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]].
+2024-06-07T03:35:31.992+07:00  INFO 34468 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/error with handler org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest).
+2024-06-07T03:35:33.763+07:00  INFO 34468 --- [http-nio-5050-exec-6] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:35:34.828+07:00  INFO 34468 --- [http-nio-5050-exec-7] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doPostViewLogin(Map, HttpServletRequest).
+2024-06-07T03:35:34.850+07:00  INFO 34468 --- [http-nio-5050-exec-8] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/admin/home with handler com.quocdat.java5.controller.AdminController#doGetViewAdminHome().
+2024-06-07T03:35:34.875+07:00  INFO 34468 --- [http-nio-5050-exec-9] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/admin/home with handler com.quocdat.java5.controller.AdminController#doGetViewAdminHome().
+2024-06-07T03:39:03.073+07:00  INFO 50232 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 50232 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:39:03.074+07:00  INFO 50232 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:39:03.098+07:00  INFO 50232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:39:03.098+07:00  INFO 50232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:39:03.564+07:00  INFO 50232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:39:03.565+07:00  INFO 50232 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:39:03.569+07:00  INFO 50232 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:39:03.573+07:00  INFO 50232 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:39:03.573+07:00  INFO 50232 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:39:03.599+07:00  INFO 50232 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:39:03.599+07:00  INFO 50232 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 501 ms
+2024-06-07T03:39:03.654+07:00  INFO 50232 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:39:03.790+07:00  INFO 50232 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:39:03.810+07:00  INFO 50232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:39:03.816+07:00  INFO 50232 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.956 seconds (process running for 1.325)
+2024-06-07T03:39:26.005+07:00  INFO 50232 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:39:26.005+07:00  INFO 50232 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:39:26.006+07:00  INFO 50232 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-07T03:39:26.015+07:00  INFO 50232 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/admin/home with handler com.quocdat.java5.controller.AdminController#doGetViewAdminHome().
+2024-06-07T03:39:26.016+07:00  INFO 50232 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@5f15ac36.
+2024-06-07T03:40:05.020+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 58604 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:40:05.021+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:40:05.045+07:00  INFO 58604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:40:05.045+07:00  INFO 58604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:40:05.513+07:00  INFO 58604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:40:05.517+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:40:05.520+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:40:05.525+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:40:05.525+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:40:05.547+07:00  INFO 58604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:40:05.547+07:00  INFO 58604 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 502 ms
+2024-06-07T03:40:05.605+07:00  INFO 58604 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:40:05.735+07:00  INFO 58604 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:40:05.753+07:00  INFO 58604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:40:05.760+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.976 seconds (process running for 1.328)
+2024-06-07T03:40:09.374+07:00  INFO 58604 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:40:09.376+07:00  INFO 58604 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:40:09.376+07:00  INFO 58604 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-07T03:40:09.387+07:00  INFO 58604 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/ with handler com.quocdat.java5.controller.HomeController#doGetViewIndex(HttpServletRequest).
+2024-06-07T03:40:09.389+07:00  INFO 58604 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@63bb5bdd.
+2024-06-07T03:40:10.570+07:00  INFO 58604 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:40:10.570+07:00  INFO 58604 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@390bb1a5.
+2024-06-07T03:40:35.546+07:00  INFO 58604 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-06-07T03:40:35.587+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 58604 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:40:35.587+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:40:35.691+07:00  INFO 58604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:40:35.691+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:40:35.691+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:40:35.691+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:40:35.692+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:40:35.700+07:00  INFO 58604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:40:35.700+07:00  INFO 58604 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 110 ms
+2024-06-07T03:40:35.716+07:00  INFO 58604 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:40:35.740+07:00  INFO 58604 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:40:35.745+07:00  INFO 58604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:40:35.748+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.174 seconds (process running for 31.317)
+2024-06-07T03:40:35.749+07:00  INFO 58604 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-07T03:41:24.794+07:00  INFO 58604 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-07T03:41:24.835+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 58604 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:41:24.835+07:00  INFO 58604 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:41:24.913+07:00  INFO 58604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:41:24.914+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:41:24.914+07:00  INFO 58604 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:41:24.914+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:41:24.914+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:41:24.922+07:00  INFO 58604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:41:24.922+07:00  INFO 58604 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 86 ms
+2024-06-07T03:41:24.926+07:00  WARN 58604 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+2024-06-07T03:41:24.926+07:00  INFO 58604 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-06-07T03:41:24.929+07:00  INFO 58604 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-07T03:41:24.939+07:00 ERROR 58604 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at com.quocdat.java5.Java5Application.main(Java5Application.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.quocdat.java5.config.WebMvcConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@cc7558e]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:429) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:410) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:312) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1085) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/quocdat/java5/interceptor/ErrorLoggingInterceptor
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752) ~[spring-core-6.1.5.jar:6.1.5]
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.quocdat.java5.interceptor.ErrorLoggingInterceptor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 28 common frames omitted
+
+2024-06-07T03:41:55.432+07:00  INFO 61428 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 61428 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:41:55.433+07:00  INFO 61428 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:41:55.464+07:00  INFO 61428 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:41:55.464+07:00  INFO 61428 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:41:55.977+07:00  INFO 61428 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:41:55.979+07:00  INFO 61428 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:41:55.983+07:00  INFO 61428 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:41:55.990+07:00  INFO 61428 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:41:55.990+07:00  INFO 61428 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:41:56.016+07:00  INFO 61428 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:41:56.016+07:00  INFO 61428 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 552 ms
+2024-06-07T03:41:56.088+07:00  INFO 61428 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:41:56.251+07:00  INFO 61428 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:41:56.272+07:00  INFO 61428 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:41:56.277+07:00  INFO 61428 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 1.047 seconds (process running for 1.464)
+2024-06-07T03:41:59.220+07:00  INFO 61428 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:41:59.220+07:00  INFO 61428 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:41:59.221+07:00  INFO 61428 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-07T03:41:59.231+07:00  INFO 61428 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/ with handler com.quocdat.java5.controller.HomeController#doGetViewIndex(HttpServletRequest).
+2024-06-07T03:41:59.232+07:00  INFO 61428 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@463935c7.
+2024-06-07T03:42:00.250+07:00  INFO 61428 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:42:00.250+07:00  INFO 61428 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@246c5949.
+2024-06-07T03:42:35.214+07:00  INFO 61428 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-07T03:42:35.261+07:00  INFO 61428 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 61428 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:42:35.261+07:00  INFO 61428 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:42:35.357+07:00  INFO 61428 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:42:35.357+07:00  INFO 61428 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:42:35.357+07:00  INFO 61428 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:42:35.359+07:00  INFO 61428 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:42:35.359+07:00  INFO 61428 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:42:35.371+07:00  INFO 61428 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:42:35.371+07:00  INFO 61428 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 108 ms
+2024-06-07T03:42:35.379+07:00  WARN 61428 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+2024-06-07T03:42:35.379+07:00  INFO 61428 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-06-07T03:42:35.382+07:00  INFO 61428 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-07T03:42:35.392+07:00 ERROR 61428 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at com.quocdat.java5.Java5Application.main(Java5Application.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.quocdat.java5.config.WebMvcConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2bf1e1ed]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:429) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:410) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:312) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1085) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/quocdat/java5/interceptor/ErrorLoggingInterceptor
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752) ~[spring-core-6.1.5.jar:6.1.5]
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.quocdat.java5.interceptor.ErrorLoggingInterceptor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 28 common frames omitted
+
+2024-06-07T03:43:36.371+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 55372 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:43:36.373+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:43:36.399+07:00  INFO 55372 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:43:36.399+07:00  INFO 55372 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:43:36.957+07:00  INFO 55372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:43:36.960+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:43:36.963+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:43:36.969+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:43:36.969+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:43:36.997+07:00  INFO 55372 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:43:36.997+07:00  INFO 55372 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2024-06-07T03:43:37.072+07:00  INFO 55372 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:43:37.229+07:00  INFO 55372 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:43:37.251+07:00  INFO 55372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:43:37.256+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 1.108 seconds (process running for 1.45)
+2024-06-07T03:43:42.729+07:00  INFO 55372 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:43:42.730+07:00  INFO 55372 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:43:42.730+07:00  INFO 55372 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-07T03:43:42.744+07:00  INFO 55372 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:43:42.745+07:00  INFO 55372 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Session variables: java.util.Collections$3@65eb1150.
+2024-06-07T03:44:40.559+07:00  INFO 55372 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-06-07T03:44:40.603+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 55372 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:44:40.604+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:44:40.699+07:00  INFO 55372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:44:40.699+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:44:40.699+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:44:40.700+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:44:40.700+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:44:40.708+07:00  INFO 55372 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:44:40.708+07:00  INFO 55372 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 103 ms
+2024-06-07T03:44:40.714+07:00  WARN 55372 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+2024-06-07T03:44:40.714+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-06-07T03:44:40.719+07:00  INFO 55372 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-07T03:44:40.729+07:00 ERROR 55372 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig' defined in file [E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes\com\quocdat\java5\config\WebMvcConfig.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at com.quocdat.java5.Java5Application.main(Java5Application.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.quocdat.java5.config.WebMvcConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@482e5feb]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689) ~[spring-core-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:429) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:410) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:312) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1085) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574) ~[spring-beans-6.1.5.jar:6.1.5]
+	... 18 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/quocdat/java5/interceptor/ErrorLoggingInterceptor
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752) ~[spring-core-6.1.5.jar:6.1.5]
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.quocdat.java5.interceptor.ErrorLoggingInterceptor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.4.jar:3.2.4]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 28 common frames omitted
+
+2024-06-07T03:45:38.936+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 55372 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:45:38.936+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:45:39.014+07:00  INFO 55372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:45:39.014+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:45:39.015+07:00  INFO 55372 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:45:39.015+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:45:39.015+07:00  INFO 55372 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:45:39.020+07:00  INFO 55372 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:45:39.020+07:00  INFO 55372 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 83 ms
+2024-06-07T03:45:39.031+07:00  INFO 55372 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:45:39.050+07:00  INFO 55372 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:45:39.055+07:00  INFO 55372 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:45:39.056+07:00  INFO 55372 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.13 seconds (process running for 123.249)
+2024-06-07T03:45:39.057+07:00  INFO 55372 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-07T03:45:47.648+07:00  INFO 63920 --- [restartedMain] com.quocdat.java5.Java5Application       : Starting Java5Application using Java 21.0.2 with PID 63920 (E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5\target\classes started by Lenovo in E:\Learning\FPT_Polytechnic\Java_5\source\VitaminCode_Java5)
+2024-06-07T03:45:47.649+07:00  INFO 63920 --- [restartedMain] com.quocdat.java5.Java5Application       : No active profile set, falling back to 1 default profile: "default"
+2024-06-07T03:45:47.681+07:00  INFO 63920 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-07T03:45:47.681+07:00  INFO 63920 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-07T03:45:48.135+07:00  INFO 63920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-06-07T03:45:48.137+07:00  INFO 63920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-06-07T03:45:48.140+07:00  INFO 63920 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-06-07T03:45:48.144+07:00  INFO 63920 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-07T03:45:48.144+07:00  INFO 63920 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-07T03:45:48.171+07:00  INFO 63920 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-07T03:45:48.171+07:00  INFO 63920 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 490 ms
+2024-06-07T03:45:48.225+07:00  INFO 63920 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-07T03:45:48.347+07:00  INFO 63920 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-07T03:45:48.369+07:00  INFO 63920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path ''
+2024-06-07T03:45:48.374+07:00  INFO 63920 --- [restartedMain] com.quocdat.java5.Java5Application       : Started Java5Application in 0.947 seconds (process running for 1.296)
+2024-06-07T03:45:57.792+07:00  INFO 63920 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-07T03:45:57.792+07:00  INFO 63920 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-07T03:45:57.793+07:00  INFO 63920 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-07T03:45:57.815+07:00  INFO 63920 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:45:57.817+07:00  INFO 63920 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:45:58.971+07:00  INFO 63920 --- [http-nio-5050-exec-4] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doPostViewLogin(Map, HttpServletRequest).
+2024-06-07T03:45:58.971+07:00  INFO 63920 --- [http-nio-5050-exec-4] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:45:59.002+07:00  INFO 63920 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/admin/home with handler com.quocdat.java5.controller.AdminController#doGetViewAdminHome().
+2024-06-07T03:45:59.002+07:00  INFO 63920 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:45:59.031+07:00  INFO 63920 --- [http-nio-5050-exec-5] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/admin/home with handler com.quocdat.java5.controller.AdminController#doGetViewAdminHome().
+2024-06-07T03:45:59.031+07:00  INFO 63920 --- [http-nio-5050-exec-5] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:00.431+07:00  INFO 63920 --- [http-nio-5050-exec-7] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/logout with handler com.quocdat.java5.controller.HomeController#doPostViewLogout(HttpServletRequest).
+2024-06-07T03:46:00.432+07:00  INFO 63920 --- [http-nio-5050-exec-7] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:00.435+07:00  INFO 63920 --- [http-nio-5050-exec-8] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/index with handler com.quocdat.java5.controller.HomeController#doGetViewIndex(HttpServletRequest).
+2024-06-07T03:46:00.435+07:00  INFO 63920 --- [http-nio-5050-exec-8] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:00.459+07:00  INFO 63920 --- [http-nio-5050-exec-6] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/index with handler com.quocdat.java5.controller.HomeController#doGetViewIndex(HttpServletRequest).
+2024-06-07T03:46:00.459+07:00  INFO 63920 --- [http-nio-5050-exec-6] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:01.791+07:00  INFO 63920 --- [http-nio-5050-exec-10] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:46:01.791+07:00  INFO 63920 --- [http-nio-5050-exec-10] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:02.657+07:00  INFO 63920 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doPostViewLogin(Map, HttpServletRequest).
+2024-06-07T03:46:02.657+07:00  INFO 63920 --- [http-nio-5050-exec-1] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:02.661+07:00  INFO 63920 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/user/home with handler com.quocdat.java5.controller.UserController#doGetViewAdminHome().
+2024-06-07T03:46:02.661+07:00  INFO 63920 --- [http-nio-5050-exec-2] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:02.684+07:00  INFO 63920 --- [http-nio-5050-exec-4] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/user/home with handler com.quocdat.java5.controller.UserController#doGetViewAdminHome().
+2024-06-07T03:46:02.684+07:00  INFO 63920 --- [http-nio-5050-exec-4] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:07.054+07:00  INFO 63920 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/user/home with handler com.quocdat.java5.controller.UserController#doGetViewAdminHome().
+2024-06-07T03:46:07.054+07:00  INFO 63920 --- [http-nio-5050-exec-3] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.
+2024-06-07T03:46:11.371+07:00  INFO 63920 --- [http-nio-5050-exec-7] c.q.j.i.ErrorLoggingInterceptor          : Received request: http://localhost:5050/login with handler com.quocdat.java5.controller.HomeController#doGetViewLogin().
+2024-06-07T03:46:11.371+07:00  INFO 63920 --- [http-nio-5050-exec-7] c.q.j.i.ErrorLoggingInterceptor          : Session variables: user.

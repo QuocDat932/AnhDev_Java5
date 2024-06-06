@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Đây là trang Login</h1>
+    <button onclick="login('Admin')">
+        Đăng nhâp Admin
+    </button>
+    <button onclick="login('User')">
+        Đăng nhâp User
+    </button>
+</body>
+<script>
+    function login (role) {
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                role: role
+            })
+        }).then(() => {
+            role === 'Admin' ? window.open("admin/home") : window.open("user/home")
+        })
+    }
+</script>
+</html>
