@@ -1,6 +1,8 @@
 package com.quocdat.java5.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,4 +35,9 @@ public class SinhVienE implements Serializable {
     @JoinColumn(name = "ma_hk", referencedColumnName = "ma_hk")
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private HocKiE hocKi;
+
+    @JsonCreator
+    public SinhVienE(@JsonProperty("mssv") String mssv) {
+        this.mssv = mssv;
+    }
 }
