@@ -25,7 +25,7 @@ class Home {
             })
             return
         }
-        this.listTask = response.payload.map(e =>
+        this.listTask = response.data.map(e =>
             ({
                 id: e.sysId,
                 name: e.tenGhiChu,
@@ -37,6 +37,7 @@ class Home {
         this.showTaskToCalendar()
     }
     generateCalendar = () => {
+        $('#title-calendar').text(`Tháng ${this.month} - ${this.year}`)
         $('.calendar-grid').empty();
         let calendar = $('#calendar')
 
