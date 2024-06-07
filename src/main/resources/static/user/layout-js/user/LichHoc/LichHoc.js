@@ -60,8 +60,7 @@ class LichHoc {
             info: false,
             paging: true,
             ordering: false,
-            lengthMenu: [10],
-            dom: 'lrtip'
+            lengthMenu: [10]
         });
         console.log(table)
         $('.dt-length').hide()
