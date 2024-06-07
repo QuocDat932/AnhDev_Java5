@@ -40,15 +40,15 @@
                 </div>
             </div>
             <div>
-                <table class="table table-responsive table-bordered table-hover border-black">
+                <table class="table table-responsive table-bordered table-hover border-black" id="tableBangDiem">
                     <thead class="text-center">
-                        <th>No.</th>
-                        <th>MSSV</th>
-                        <th>Họ tên</th>
-                        <th>Lần thi</th>
-                        <th>Môn học</th>
-                        <th>Học kỳ</th>
-                        <th>Điểm</th>
+                    <th>No.</th>
+                    <th>MSSV</th>
+                    <th>Họ tên</th>
+                    <th>Lần thi</th>
+                    <th>Môn học</th>
+                    <th>Học kỳ</th>
+                    <th>Điểm</th>
                     </thead>
                     <tbody class="tableBangDiem"></tbody>
                 </table>
@@ -86,7 +86,7 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idDiemThi" class="form-label fw-bold">Điểm thi</label>
-                        <input type="text" class="form-control" id="idDiemThi">
+                        <input type="text" class="form-control" id="idDiemThi" onchange="serviceBangDiem.xuatKetQua()">
                     </div>
                 </div>
                 <div class="col-6">
@@ -108,9 +108,9 @@
             </div>
 
             <div class="mb-3 text-end">
-                <button class="btn btn-primary mb-3" onclick=""><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
-                <button class="btn btn-success mb-3" onclick=""><i class="fa-solid fa-download me-3"></i>Lưu</button>
-                <button class="btn btn-success mb-3" onclick=""><i class="fa-solid fa-plus me-3"></i>Thêm</button>
+                <button class="btn btn-primary mb-3" onclick="serviceBangDiem.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
+                <button class="btn btn-success mb-3" onclick="serviceBangDiem.btnLuu_click(true)"><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                <button class="btn btn-success mb-3" onclick="serviceBangDiem.btnLuu_click(false)"><i class="fa-solid fa-plus me-3"></i>Thêm</button>
                 <button class="btn btn-danger mb-3"  onclick=""><i class="fa-solid fa-trash me-3"></i>Xóa</button>
             </div>
         </div>

@@ -15,4 +15,14 @@ public interface SinhVienRepo extends JpaRepository<SinhVienE, String> {
 
     @Query(value = "SELECT DISTINCT s.chuyen_nganh FROM sinh_vien s", nativeQuery = true)
     List<String> getAllChuyenNganh();
+
+
+    @Query(value = "SELECT * FROM sinh_vien s WHERE s.chuyen_nganh = ?1", nativeQuery = true)
+    List<SinhVienE> getListSinhVienByChuyenNganh(String chuyenNganh);
+
+    @Query(value = "SELECT * FROM sinh_vien s WHERE s.ho_va_ten = ?1", nativeQuery = true)
+    List<SinhVienE> getListSinhVienByHoTen(String hoVaTen);
+
+    @Query(value = "SELECT * FROM sinh_vien s WHERE s.mssv = ?1 and s.ho_va_ten = ?2 and s.chuyen_nganh = ?3", nativeQuery = true)
+    SinhVienE getSinhVienByMssvAndHoTenAndChuyenNganh(String mssv, String hoVaTen, String chuyenNganh);
 }
