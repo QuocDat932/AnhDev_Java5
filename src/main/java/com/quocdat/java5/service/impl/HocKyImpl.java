@@ -2,7 +2,6 @@ package com.quocdat.java5.service.impl;
 
 import com.quocdat.java5.convert.HocKiConvert;
 import com.quocdat.java5.data.dto.request.HocKiDto;
-import com.quocdat.java5.data.entity.HocKiE;
 import com.quocdat.java5.data.model.HocKiM;
 import com.quocdat.java5.repository.HocKiRepo;
 import com.quocdat.java5.service.HocKiService;
@@ -23,14 +22,39 @@ public class HocKyImpl implements HocKiService {
     }
 
     @Override
-    public int deleteHocKyByMaHocKy(String maHK) {
-        return repo.deleteHocKy(maHK);
+    public int deleteHocKyByMaHocKy(String maHK){
+        System.out.println(maHK);
+        if(existsHocKyByMaHk(maHK)){
+            System.out.println("chay");
+            return repo.deleteHocKy(maHK);
+        }else
+            return 0;
     }
 
     @Override
     public HocKiM saveHocKi(HocKiDto hocKiDto) {
-        return HocKiM.convertHocKyEToHocKyM(
-                repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
-        );
+        if(!existsHocKyByMaHk(hocKiDto.getMaHk())){
+            return HocKiM.convertHocKyEToHocKyM(
+                    repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
+            );
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public boolean existsHocKyByMaHk(String maHK) {
+        return repo.existsHocKiByMaHk(maHK);
+    }
+
+    @Override
+    public HocKiM updateHocKi(HocKiDto hocKiDto) {
+        if(existsHocKyByMaHk(hocKiDto.getMaHk())){
+            return HocKiM.convertHocKyEToHocKyM(
+                    repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
+            );
+        }else {
+            return null;
+        }
     }
 }

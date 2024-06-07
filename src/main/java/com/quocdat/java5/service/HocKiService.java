@@ -11,4 +11,8 @@ public interface HocKiService {
     int deleteHocKyByMaHocKy(String maHK);
 
     HocKiM saveHocKi(HocKiDto hocky);
+
+    boolean existsHocKyByMaHk(String maHK);
+
+    HocKiM updateHocKi(HocKiDto hocky);
 }

@@ -37,7 +37,7 @@ public class HocKiApi {
         try {
             result.put("success",true);
             result.put("data",hocKyService.saveHocKi(hocKi));
-            result.put("message","Call api Success!");
+            result.put("message","Lưu thành công!");
         } catch (Exception e) {
             result.put("success",false);
             result.put("data",null);
@@ -47,13 +47,29 @@ public class HocKiApi {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("putUpdateHocKi")
+    public ResponseEntity<?> doPutUpdateHocKi(@RequestBody HocKiDto hocKi) {
+        Map<String,Object> result =new HashMap();
+        try {
+            result.put("success",true);
+            result.put("data",hocKyService.updateHocKi(hocKi));
+            result.put("message","Cập nhật thành công!");
+        } catch (Exception e) {
+            result.put("success",false);
+            result.put("data",null);
+            result.put("message","Call api fail!");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/deleteHocKyByMaHocKy")
-    public ResponseEntity<?> doDeleteHocKyByMaHocKy(@Param("maHK") String maHK) {
+    public ResponseEntity<?> doDeleteHocKyByMaHocKy(@RequestParam("maHk") String maHK) {
         Map<String,Object> result =new HashMap();
         try {
             result.put("success",true);
             result.put("data",hocKyService.deleteHocKyByMaHocKy(maHK));
-            result.put("message","Call api Success!");
+            result.put("message","Xóa thành công!");
         } catch (Exception e) {
             result.put("success",false);
             result.put("data",null);
