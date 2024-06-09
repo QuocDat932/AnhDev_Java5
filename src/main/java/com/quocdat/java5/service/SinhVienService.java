@@ -1,9 +1,7 @@
 package com.quocdat.java5.service;
 
 import com.quocdat.java5.data.dto.request.SinhVienDto;
-import com.quocdat.java5.data.entity.SinhVienE;
 import com.quocdat.java5.data.model.SinhVienM;
-import org.hibernate.annotations.processing.SQL;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +20,7 @@ public interface SinhVienService {
      * @return SinhVienDto
      * @throws SQLException
      */
-    SinhVienM getSinhVienByMSSV(String mssv) throws SQLException;
+    List<SinhVienM> getListSinhVienByMSSV(String mssv) throws SQLException;
 
     /**
      * Lưu thông tin sinh viên
@@ -58,9 +56,5 @@ public interface SinhVienService {
      */
     List<String> getAllChuyenNganh() throws SQLException;
 
-    List<SinhVienM> getListSinhVienByHoTen(String hoVaTen) throws SQLException;
-
-    List<SinhVienM> getListSinhVienByChuyenNganh(String chuyenNganh) throws SQLException;
-
-    SinhVienM getSinhVienByMssvAndHoTenAndChuyenNganh(String mssv, String hoVaTen, String chuyenNganh) throws SQLException;
+    List<SinhVienM> getSinhVienByFilter(String mssv, String hoVaTen, String chuyenNganh) throws SQLException;
 }
