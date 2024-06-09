@@ -49,20 +49,22 @@ public class LichSuHocTapApi {
         return ResponseEntity.ok(result);
     }
 
-//    @GetMapping("/getLichSuHocTapByLichSuHocTapId")
-//    public ResponseEntity<?> doGetLichSuHocTapById(LichSuHocTapID lichSuHocTapID) {
-//        Map<String, Object> result = new HashMap<>();
-//        try {
-//            result.put("status", true);
-//            result.put("message", "Call API Success");
-//            result.put("data", lichsuhoctapServ.getLichSuHocTapById(lichSuHocTapID));
-//        } catch (Exception e) {
-//            result.put("status", false);
-//            result.put("message", "Fail when call API /java05/lichsuhoctap-api/getAllLichSuHocTap");
-//            result.put("data", null);
-//        }
-//        return ResponseEntity.ok(result);
-//    }
+    @GetMapping("getListBangDiemByFilter")
+    public ResponseEntity<?> doGetListBangDiemByFilter(@RequestParam("mssv") String mssv,
+                                                       @RequestParam("maMonHoc") String maMonHoc,
+                                                       @RequestParam("ketQua") String ketQua) {
+        Map<String, Object> result = new HashMap();
+        try {
+            result.put("success", true);
+            result.put("message", "Call API Success");
+            result.put("data", lichsuhoctapServ.getListLichSuHocTapByFilter(mssv, maMonHoc, ketQua));
+        } catch (Exception e) {
+            result.put("success", false);
+            result.put("message", "Fail when call API /java05/lichsuhoctap-api/getAllLichSuHocTap");
+            result.put("data", null);
+        }
+        return ResponseEntity.ok(result);
+    }
 
     @PostMapping("/saveLichSuHocTap")
     public ResponseEntity<?> doPostSaveLichSuHocTap(@RequestBody LichSuHocTapDto lichSuHocTapDto) {
@@ -80,4 +82,19 @@ public class LichSuHocTapApi {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/deleteLichSuHocTapBySysId")
+    public ResponseEntity<?> doDeleteLichSuHocTapBySysId(@RequestParam("sysId") Long sysId) {
+        Map<String, Object> result = new HashMap();
+        try {
+            result.put("success", true);
+            result.put("message", "Call API Success");
+            result.put("data", lichsuhoctapServ.deleteLichSuHocTapBySysId(sysId));
+        } catch (Exception e) {
+            result.put("success", false);
+            result.put("message", "Fail when call API /java05/lichsuhoctap-api/deleteLichSuHocTapBySysId");
+            result.put("data", null);
+            log.error("Fail When saveLichSuHocTap: ", e);
+        }
+        return ResponseEntity.ok(result);
+    }
 }
