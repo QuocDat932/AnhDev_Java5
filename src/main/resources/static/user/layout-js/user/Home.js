@@ -67,7 +67,9 @@ class Home {
             let daySquare = $('<div>')
             daySquare.addClass('calendar-day')
             daySquare.text(day)
-            daySquare.attr('id', `day-${day}`);
+            daySquare.attr('id', `day-${day}`)
+            daySquare.attr('ondrop', `serviceHome.onDropTask(event)`)
+            daySquare.attr('ondragover', `serviceHome.allowDropTask(event)`)
             calendar.append(daySquare)
         }
     }
@@ -85,6 +87,8 @@ class Home {
                         let taskElement = $('<div>')
                         taskElement.addClass('task')
                         taskElement.attr('id', `task-${index}`)
+                        taskElement.attr('draggable', 'true')
+                        taskElement.attr('ondragstart', `serviceHome.drag(event)`)
                         taskElement.text(taskName)
                         taskElement.css('background-color', taskColor)
                         taskElement.on('click', (e) => {
@@ -244,5 +248,21 @@ class Home {
         $('#title-calendar').text(`Tháng ${this.month} - ${this.year}`)
         this.generateCalendar()
         await this.getListTask()
+    }
+    onDropTask = (e) => {
+        e.preventDefault();
+        let data = e.dataTransfer.getData("text");
+        e.target.append(document.getElementById(data));
+        this.changeDayTask()
+    }
+    allowDropTask = (e) => {
+        e.preventDefault()
+    }
+    drag = (e) => {
+        this.showTaskDetail(e)
+        e.dataTransfer.setData("text", e.target.id);
+    }
+    changeDayTask = () => {
+
     }
 }
