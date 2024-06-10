@@ -19,7 +19,10 @@
                     <label for="idFilterNgay" class="form-label m-0 fw-bold">Ngày</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="date" id="idFilterNgay" class="form-control">
+                    <input type="date" id="idFilterNgay" class="form-control" onchange="serviceLichHoc.getListHocKiByTime()">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-dark rounded rounded-circle"><i class="fa-solid fa-rotate-right" onclick="serviceLichHoc.reset_filter()"></i></button>
                 </div>
             </div>
             <div class="tableLichHoc">
@@ -66,16 +69,16 @@
                     <i class="fa-solid fa-rotate-right me-3"></i>
                     Xóa form
                 </button>
-                <button class="btn btn-success mb-3" onclick="serviceLichHoc.btnLuu_click()" id="idBtnLuu">
+                <button class="btn btn-success mb-3" onclick="serviceLichHoc.btnLuu_click()" id="idBtnLuu" disabled>
                     <i class="fa-solid fa-download me-3"></i>
                     Lưu
                 </button>
-                <button class="btn btn-danger mb-3"  onclick="serviceLichHoc.btnXoa_click()" id="idBtnXoa">
+                <button class="btn btn-danger mb-3"  onclick="serviceLichHoc.btnXoa_click()" id="idBtnXoa" disabled>
                     <i class="fa-solid fa-trash me-3"></i>
                     Xóa
                 </button>
-                <button class="btn btn-danger mb-3"  onclick="serviceLichHoc.btnCapNhat_click()" id="idBtnCapNhat">
-                    <i class="fa-solid fa-trash me-3"></i>
+                <button class="btn btn-info mb-3"  onclick="serviceLichHoc.btnCapNhat_click()" id="idBtnCapNhat" disabled>
+                    <i class="fa-solid fa-pen me-3"></i>
                     Cập nhật
                 </button>
             </div>

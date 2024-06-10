@@ -23,17 +23,6 @@ public class LichSuHocTapImpl implements LichSuHoctapService {
 
     private final SinhVienRepo sinhVienRepo;
 
-//    @Override
-//    public List<LichSuHocTap> getListLichSuHocTapByMssv(String mssv) throws SQLException{
-//        return repo.getLichSuHocTapByIdMssv(mssv);
-//    }
-
-    @Override
-    public LichSuHocTapM getLichSuHocTapBySysId(Long sysId) throws SQLException {
-        LichSuHocTapE lichSuHocTapE =  repo.getLichSuHocTapBySysId(sysId);
-        return LichSuHocTapM.convertLichSuHocTapEToLichSuHocTapM(lichSuHocTapE);
-    }
-
     @Override
     public List<LichSuHocTapM> getLichSuHocTapByMssv(String mssv) throws SQLException {
         SinhVienE sinhVienE = sinhVienRepo.getSinhViensByMssv(mssv);
@@ -52,6 +41,24 @@ public class LichSuHocTapImpl implements LichSuHoctapService {
     public LichSuHocTapM postSaveLichSuHocTap(LichSuHocTapDto lichSuHocTapDto) throws SQLException {
         return LichSuHocTapM.convertLichSuHocTapEToLichSuHocTapM(
                 repo.save(LichSuHocTapConvert.convertLichSuHocTapDtoToLichSuHocTapE(lichSuHocTapDto))
+        );
+    }
+
+    @Transactional
+    @Override
+    public Boolean deleteLichSuHocTapBySysId(Long sysId) throws SQLException {
+        try {
+            repo.deleteLichSuHocTapBySysId(sysId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public List<LichSuHocTapM> getListLichSuHocTapByFilter(String mssv, String maMonHoc, String ketQua) throws SQLException{
+        return LichSuHocTapM.convertListLichSuHocTapEToListLichSuHocTapM(
+                repo.getListLichSuHocTapByFilter(mssv, maMonHoc, ketQua)
         );
     }
 }

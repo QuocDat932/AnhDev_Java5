@@ -7,24 +7,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface LichSuHoctapService {
-//    List<LichSuHocTap> getListLichSuHocTapByMssv(String mssv) throws SQLException;
 
-//    void postSaveLichSuHocTap(LichSuHocTap lichSuHocTap) throws SQLException;
-
-//    LichSuHocTap getLichSuHocTapById(LichSuHocTapID id) throws SQLException;
-
-//    List<LichSuHocTap> getAllLichSuHocTap() throws SQLException;
-
-    /**
-     * Lấy thông tin tất cả lịch sử học tập
-     *
-     * @return
-     */
     List<LichSuHocTapM> getAllLichSuHocTap() throws SQLException;
-
-    LichSuHocTapM getLichSuHocTapBySysId(Long sysId) throws SQLException;
 
     List<LichSuHocTapM> getLichSuHocTapByMssv(String mssv) throws SQLException;
 
     LichSuHocTapM postSaveLichSuHocTap(LichSuHocTapDto lichSuHocTapDto) throws SQLException;
+
+    Boolean deleteLichSuHocTapBySysId(Long sysId) throws SQLException;
+
+    List<LichSuHocTapM> getListLichSuHocTapByFilter(String mssv, String maMonHoc, String ketQua) throws SQLException;
 }
