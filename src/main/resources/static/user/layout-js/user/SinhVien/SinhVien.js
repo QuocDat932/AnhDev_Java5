@@ -7,14 +7,7 @@ class SinhVien {
     }
 
     getListSinhVien = async () => {
-        let param = {
-            filterMssv : $('#idFilterMssv').val(),
-            filterHoVaTen : $('#idFilterTen').val(),
-            filterChuyenNganh : $('#idFilterChuyenNganh').val()
-        }
-
         let {data : response} = await axios.get('/java05/sinhvien-api/getAllSinhVien')
-
         if (!response.success) {
             Swal.fire({
                 title: response.message,
@@ -24,9 +17,6 @@ class SinhVien {
             })
             return
         }
-
-        console.log(response.data)
-
         this.listSinhVien = response.data.map(e => ({
             mssv : e.mssv,
             hoVaTen : e.hoVaTen,
@@ -34,7 +24,6 @@ class SinhVien {
             gioiTinh : e.gioiTinh,
             hocKy : e.hocKi.ma_hk
         }))
-
         await this.getListChuyenNganh()
         this.createTableSinhVien()
     }
@@ -58,7 +47,6 @@ class SinhVien {
         if ($.fn.dataTable.isDataTable('#tableSinhVien')) {
             $('#tableSinhVien').DataTable().destroy();
         }
-
         let body = ``
         let select = `<option value="0"></option>`
         this.listSinhVien.forEach((e, index) => {
@@ -71,11 +59,9 @@ class SinhVien {
                            <td class="bg-transparent text-center">${e.hocKy}</td> 
                        </tr>`
         })
-
         this.listChuyenNganh.forEach((String, index) =>{
             select +=`<option value="index+1">${String}</option>`
         })
-
         let footer = `</tbody></table>`
         let result = body +footer
         $('.tableSinhVien').html(result)
@@ -93,20 +79,21 @@ class SinhVien {
         table.off('dblclick').on('dblclick', 'tbody tr', function () {
             let data = table.row(this).index();
             selt.fillDataToForm(selt.listSinhVien[data])
-
+            $('#btnCapNhat').prop('disabled', false)
+            $('#btnLuu').prop('disabled', true)
+            $('#btnXoa').prop('disabled', false)
         });
+        $('#btnCapNhat').prop('disabled', true)
+        $('#btnLuu').prop('disabled', false)
+        $('#btnXoa').prop('disabled', true)
     }
 
     getSinhVienByMssv = async (mssv) => {
         let param = {
             mssv: mssv
         }
-
         let {data: response} = await axios.get('java05/sinhvien-api/getSinhVienByMSSV',
             {params: param})
-
-        console.log(response.data)
-
         if (!response.success) {
             Swal.fire({
                 title: 'Không tìm thấy sinh viên',
@@ -116,92 +103,24 @@ class SinhVien {
             })
             return
         }
-        this.listSinhVien = [{
-            mssv : response.data.mssv,
-            hoVaTen : response.data.hoVaTen,
-            chuyenNganh : response.data.chuyenNganh,
-            gioiTinh : response.data.gioiTinh,
-            hocKy : response.data.hocKi.ma_hk
-        }];
-        this.createTableSinhVien();
-    }
-
-    getListSinhVienByChuyenNganh = async (chuyenNganh) => {
-        let param = {
-            chuyenNganh: chuyenNganh
-        }
-
-        let {data: response} = await axios.get('java05/sinhvien-api/getListSinhVienByChuyenNganh',
-            {params: param})
-
-        console.log(response.data)
-
-        if (!response.success) {
-            Swal.fire({
-                title: 'Không tìm thấy sinh viên',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-
         this.listSinhVien = response.data.map(e => ({
             mssv : e.mssv,
             hoVaTen : e.hoVaTen,
             chuyenNganh : e.chuyenNganh,
             gioiTinh : e.gioiTinh,
             hocKy : e.hocKi.ma_hk
-        }));
+        }))
         this.createTableSinhVien();
     }
 
-    getListSinhVienByHoTen = async (hoVaTen) => {
-        let param = {
-            hoVaTen: hoVaTen
-        }
-
-        console.log(param)
-
-        let {data: response} = await axios.get('/java05/sinhvien-api/getListSinhVienByHoTen',
-            {params: param})
-
-        console.log(response.data)
-
-        if (!response.success) {
-            Swal.fire({
-                title: 'Không tìm thấy sinh viên',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-
-        this.listSinhVien = response.data.map(e => ({
-            mssv : e.mssv,
-            hoVaTen : e.hoVaTen,
-            chuyenNganh : e.chuyenNganh,
-            gioiTinh : e.gioiTinh,
-            hocKy : e.hocKi.ma_hk
-        }));
-        this.createTableSinhVien();
-    }
-
-    getListSinhVienByMssvAndHoTenAndChuyenNganh = async (mssv, hoVaTen, chuyenNganh) => {
+    getListSinhVienByFilter = async (mssv, hoVaTen, chuyenNganh) => {
         let param = {
             mssv : mssv,
             hoVaTen: hoVaTen,
             chuyenNganh : chuyenNganh
         }
-
-        console.log(param)
-
-        let {data: response} = await axios.get('/java05/sinhvien-api/getListSinhVienByMSSVAHoTenAChuyenNganh',
+        let {data: response} = await axios.get('/java05/sinhvien-api/getListSinhVienByFilter',
             {params: param})
-
-        console.log(response.data)
-
         if (!response.success) {
             Swal.fire({
                 title: 'Không tìm thấy sinh viên',
@@ -211,14 +130,13 @@ class SinhVien {
             })
             return
         }
-
-        this.listSinhVien = [{
-            mssv : response.data.mssv,
-            hoVaTen : response.data.hoVaTen,
-            chuyenNganh : response.data.chuyenNganh,
-            gioiTinh : response.data.gioiTinh,
-            hocKy : response.data.hocKi.ma_hk
-        }];
+        this.listSinhVien = response.data.map(e => ({
+            mssv : e.mssv,
+            hoVaTen : e.hoVaTen,
+            chuyenNganh : e.chuyenNganh,
+            gioiTinh : e.gioiTinh,
+            hocKy : e.hocKi.ma_hk
+        }));
         this.createTableSinhVien();
     }
 
@@ -238,6 +156,9 @@ class SinhVien {
         this.fillDataToForm({})
         $('#idNam').prop('checked', true)
         $('#idXacNhan').prop('checked', false)
+        $('#btnCapNhat').prop('disabled', true)
+        $('#btnLuu').prop('disabled', false)
+        $('#btnXoa').prop('disabled', true)
     }
 
     btnLuu_click = async () => {
@@ -260,14 +181,9 @@ class SinhVien {
             gioiTinh : $('#idNam').prop('checked'),
             hocKi : $('#idHocKy').val()
         }
-
         let {data : response} = await axios.post('/java05/sinhvien-api/saveSinhVien',
             dataApiSave)
-
-        console.log(response)
-
         if (!response.success) {
-            // let {dataUpdate : reponseUpdate} = await axios.put('/java05/sinhvien-api/updateSinhVien', dataApiSave)
             Swal.fire({
                 title: 'Sinh viên đã tồn tại',
                 icon: 'error',
@@ -284,8 +200,6 @@ class SinhVien {
             })
 
         }
-
-
         await this.getListSinhVien()
     }
 
@@ -302,7 +216,6 @@ class SinhVien {
         if (!this.validateForm()) {
             return
         }
-
         let dataApiSave = {
             mssv : $('#idMssv').val(),
             hoVaTen : $('#idHoTen').val(),
@@ -310,7 +223,6 @@ class SinhVien {
             gioiTinh : $('#idNam').prop('checked'),
             hocKi : $('#idHocKy').val()
         }
-
         let {data : response} = await axios.put('/java05/sinhvien-api/updateSinhVien', dataApiSave)
         if (!response.success) {
             Swal.fire({
@@ -450,19 +362,6 @@ class SinhVien {
             filterHoVaTen : $('#idFilterTen').val(),
             filterChuyenNganh : $('#idFilterChuyenNganh option:selected').text()
         }
-
-        console.log(param)
-
-        if(param.filterMssv === "" && param.filterHoVaTen === "" && param.filterChuyenNganh == ""){
-            this.getListSinhVien();
-        } else if (param.filterMssv !== "" && param.filterHoVaTen === "" && param.filterChuyenNganh == ""){
-            this.getSinhVienByMssv(param.filterMssv);
-        } else if (param.filterMssv === "" && param.filterHoVaTen !== "" && param.filterChuyenNganh == ""){
-            this.getListSinhVienByHoTen(param.filterHoVaTen);
-        } else if (param.filterMssv === "" && param.filterHoVaTen === "" && param.filterChuyenNganh !== ""){
-            this.getListSinhVienByChuyenNganh(param.filterChuyenNganh);
-        } else {
-            this.getListSinhVienByMssvAndHoTenAndChuyenNganh(param.filterMssv, param.filterHoVaTen, param.filterChuyenNganh);
-        }
+        this.getListSinhVienByFilter(param.filterMssv, param.filterHoVaTen, param.filterChuyenNganh)
     }
 }

@@ -2,6 +2,7 @@ package com.quocdat.java5.service.impl;
 
 import com.quocdat.java5.convert.HocKiConvert;
 import com.quocdat.java5.data.dto.request.HocKiDto;
+import com.quocdat.java5.data.entity.HocKiE;
 import com.quocdat.java5.data.model.HocKiM;
 import com.quocdat.java5.repository.HocKiRepo;
 import com.quocdat.java5.service.HocKiService;
@@ -56,5 +57,14 @@ public class HocKyImpl implements HocKiService {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public List<HocKiM> getListHocKyByTime(String time) {
+        List<HocKiE> listHocKiE = repo.getListHocKiByTime(time);
+        if(listHocKiE != null){
+            return HocKiM.convertListHocKyEToListHocKyM(listHocKiE);
+        }
+        return null;
     }
 }

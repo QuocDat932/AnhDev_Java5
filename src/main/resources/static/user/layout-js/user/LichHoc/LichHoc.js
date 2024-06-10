@@ -3,14 +3,9 @@ class LichHoc {
     loadInit = () => {
         this.getListHocKy();
     }
-    getListHocKy = async () => {
-        let param = {
-            maHocKy : $('#idFilterNgay').val()
-        }
-        let {data : response} = await axios.get('/java05/hocki-api/getAllHocKy', {
-            // params : param
-        })
 
+    getListHocKy = async () => {
+        let {data : response} = await axios.get('/java05/hocki-api/getAllHocKy')
         if (!response.success) {
             Swal.fire({
                 title: response.messages,
@@ -20,7 +15,6 @@ class LichHoc {
             })
             return
         }
-
         this.listHocKy =response.data.map(e=>({
             maHk : e.maHk,
             tenHocKi : e.tenHocKi,
@@ -29,7 +23,6 @@ class LichHoc {
         }))
         this.createTableLichHoc()
     }
-
 
     createTableLichHoc = () => {
         let header = `<table class="table table-responsive table-bordered table-hover border-black" id="tableLichHoc">
@@ -41,7 +34,6 @@ class LichHoc {
                                     <th>Ngày kết thúc</th>
                                 </thead>
                                 <tbody class="tableSinhVien">`
-
         let body = ``
         this.listHocKy.forEach((e, index) => {
             body +=   `         <tr>
@@ -60,14 +52,11 @@ class LichHoc {
             info: false,
             paging: true,
             ordering: false,
-            lengthMenu: [10],
-            dom: 'lrtip'
+            lengthMenu: [10]
         });
-        console.log(table)
         $('.dt-length').hide()
         let safe = this;
         table.on('dblclick', 'tbody tr', function () {
-            console.log("hello")
             let data = table.row(this).data();
             safe.fillDataToForm({
                 maHk: data[1],         // cột 1: maHk.
@@ -96,7 +85,6 @@ class LichHoc {
             ngayBatDau : $('#idNgayBatDau').val(),
             ngayKetThuc : $('#idNgayKetThuc').val()
         }
-        console.log(dataApiSave)
         let {data : response} = await axios.post('/java05/hocki-api/saveHocKi', dataApiSave)
         if (!response.success) {
             Swal.fire({
@@ -126,7 +114,6 @@ class LichHoc {
     }
 
     btnCapNhat_click = async () => {
-        console.log("hihi")
         if (!this.validateForm()) {
             return
         }
@@ -136,7 +123,6 @@ class LichHoc {
             ngayBatDau : $('#idNgayBatDau').val(),
             ngayKetThuc : $('#idNgayKetThuc').val()
         }
-        console.log(dataApiUpdate)
         let {data : response} = await axios.put('/java05/hocki-api/putUpdateHocKi', dataApiUpdate)
         if (!response.success) {
             Swal.fire({
@@ -164,7 +150,6 @@ class LichHoc {
         })
         this.getListHocKy();
     }
-
 
     btnXoa_click = async () => {
         if (!$('#idMaHocKy').val()) {
@@ -235,6 +220,37 @@ class LichHoc {
         $('#idXacNhan').prop('checked', false)
         this.verifyForm()
     }
+
+    getListHocKiByTime = async () => {
+        let param = {
+            time : $('#idFilterNgay').val()
+        }
+        let {data: response} = await axios.get("/java05/hocki-api/getHocKyByTime",{
+            params: param
+        })
+        if (!response.success) {
+            Swal.fire({
+                title: response.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        this.listHocKy = response.data.map(e => ({
+            maHk : e.maHk,
+            tenHocKi : e.tenHocKi,
+            ngayBatDau : e.ngayBatDau,
+            ngayKetThuc : e.ngayKetThuc
+        }))
+        this.createTableLichHoc()
+    }
+
+    reset_filter = () => {
+        $('#idFilterNgay').val('');
+        this.getListHocKy();
+    }
+
     verifyForm = () => {
         let value = $('#idXacNhan').prop('checked')
         $('#idBtnLuu').prop('disabled', !value)
@@ -246,7 +262,6 @@ class LichHoc {
         $('#idNgayBatDau').prop('disabled', value)
         $('#idNgayKetThuc').prop('disabled', value)
     }
-
 
     validateForm = () => {
         if (!$('#idMaHocKy').val()) {

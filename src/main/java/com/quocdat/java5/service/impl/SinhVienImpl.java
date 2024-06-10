@@ -26,8 +26,8 @@ public class SinhVienImpl implements SinhVienService {
     }
 
     @Override
-    public SinhVienM getSinhVienByMSSV(String mssv) throws SQLException {
-        return SinhVienM.convertSinhVienEToSinhVienM(repo.getSinhViensByMssv(mssv));
+    public List<SinhVienM> getListSinhVienByMSSV(String mssv) throws SQLException {
+        return SinhVienM.convertListSinhVienEToListSinhVienM(repo.getListSinhVienByMssv(mssv));
     }
 
     @Transactional
@@ -57,31 +57,15 @@ public class SinhVienImpl implements SinhVienService {
         }
     }
 
-
-
     @Override
     public List<String> getAllChuyenNganh() throws SQLException {
         return repo.getAllChuyenNganh();
     }
 
     @Override
-    public List<SinhVienM> getListSinhVienByHoTen(String hoVaTen) throws SQLException {
+    public List<SinhVienM> getSinhVienByFilter(String mssv, String hoVaTen, String chuyenNganh) throws SQLException {
         return SinhVienM.convertListSinhVienEToListSinhVienM(
-                repo.getListSinhVienByHoTen(hoVaTen)
-        );
-    }
-
-    @Override
-    public List<SinhVienM> getListSinhVienByChuyenNganh(String chuyenNganh) throws SQLException {
-        return SinhVienM.convertListSinhVienEToListSinhVienM(
-                repo.getListSinhVienByChuyenNganh(chuyenNganh)
-        );
-    }
-
-    @Override
-    public SinhVienM getSinhVienByMssvAndHoTenAndChuyenNganh(String mssv, String hoVaTen, String chuyenNganh) throws SQLException {
-        return SinhVienM.convertSinhVienEToSinhVienM(
-                repo.getSinhVienByMssvAndHoTenAndChuyenNganh(mssv,hoVaTen,chuyenNganh)
+                repo.getSinhVienByFilter(mssv,hoVaTen,chuyenNganh)
         );
     }
 }
