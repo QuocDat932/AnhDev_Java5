@@ -79,5 +79,4 @@ public class LichSuHocTapApi {
         }
         return ResponseEntity.ok(result);
     }
-
 }

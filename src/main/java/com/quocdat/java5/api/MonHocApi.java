@@ -25,7 +25,7 @@ public class MonHocApi {
             result.put("data", monHocService.getAllMonHoc());
         } catch (Exception e) {
             result.put("success", false);
-            result.put("message", "fali whenCall api Success!");
+            result.put("message", "fali when Call api");
             result.put("data", null);
         }
         return ResponseEntity.ok(result);
@@ -40,7 +40,7 @@ public class MonHocApi {
             result.put("data", monHocService.getMonHocByMaMonHoc(maMonHoc));
         }catch (Exception e) {
             result.put("success", false);
-            result.put("message", "Fail when Call api Success!");
+            result.put("message", "Fail when Call api");
             result.put("data", null);
         }
         return ResponseEntity.ok(result);
@@ -57,7 +57,6 @@ public class MonHocApi {
             result.put("message", "fail when Call api");
             result.put("data", null);
             e.printStackTrace();
-
         }
         return ResponseEntity.ok(result);
     }
