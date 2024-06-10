@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/index :: dynamic(~{::main})}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <head>
 </head>
 <body>
@@ -12,7 +14,7 @@
         })
     </script>
     <div class="row">
-        <div class="col-2 d-flex align-items-center justify-content-center">
+        <div class="col-3 d-flex align-items-center justify-content-center">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
                     <label for="selectHocKy" class="col-form-label fw-bold fs-5">Học kỳ:</label>
@@ -23,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2 d-flex align-items-center justify-content-center">
+        <div class="col-4 d-flex align-items-center justify-content-center">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
                     <label for="selectMonHoc" class="col-form-label fw-bold fs-5">Môn học:</label>
@@ -35,8 +37,12 @@
             </div>
         </div>
         <div class="col-auto d-flex align-items-center justify-content-center">
-            <button class="btn btn-success">Tìm</button>
+            <button class="btn btn-success" onclick="serviceThongKe.getDataChart()">Tìm</button>
         </div>
+    </div>
+    <div class="row">
+        <div class="col"><canvas id="myChart" width="200px" height="100px"></canvas></div>
+        <div class="col"><canvas id="barChart" width="200px" height="100px"></div>
     </div>
 </div>
 </body>
