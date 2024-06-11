@@ -83,6 +83,7 @@ class MonHoc {
         let value = $('#idXacNhan').prop('checked')
         $('#idBtnLuu').prop('disabled', !value)
         $('#idBtnXoa').prop('disabled', !value)
+        $('#btnCapNhat').prop('disabled', !value)
 
         $('#idMaMonHoc').prop('disabled', value)
         $('#idTenMonHoc').prop('disabled', value)
@@ -130,6 +131,35 @@ class MonHoc {
         }
         console.log(dataApiSave)
         let {data : response} = await axios.post('/java05/monhoc-api/postSaveMonHoc', dataApiSave)
+        if (!response.success) {
+            Swal.fire({
+                title: response.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        Swal.fire({
+            title: response.message,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        this.getListMonHoc()
+    }
+    btnCapNhat_click = async () => {
+
+        if (!this.validateForm()) {
+            return
+        }
+        let dataApiSave = {
+            maMonHoc : $('#idMaMonHoc').val(),
+            tenMonHoc : $('#idTenMonHoc').val(),
+            soTinChi : $('#idSoTinChi').val()
+        }
+        console.log(dataApiSave)
+        let {data : response} = await axios.post('/java05/monhoc-api/postUpdateMonHoc', dataApiSave)
         if (!response.success) {
             Swal.fire({
                 title: response.message,

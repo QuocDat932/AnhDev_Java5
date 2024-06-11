@@ -54,4 +54,15 @@ public class MonHocServiceImpl implements MonHocService {
     public boolean existsMonHocByMaMonHoc(String maMonHoc) {
         return monHocRepo.existsMonHocByMaMonHoc(maMonHoc);
     }
+
+    @Override
+    public MonHocM updateMonHoc(MonHocDto monHoc) {
+        if(existsMonHocByMaMonHoc(monHoc.getMaMonHoc())){
+            return MonHocM.convertMonHoctoMonHocM(
+                    monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
+            );
+        }else {
+            return null;
+        }
+    }
 }
