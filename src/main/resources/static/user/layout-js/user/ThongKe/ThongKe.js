@@ -2,7 +2,7 @@ class ThongKe {
     listMonHoc = []
     listHocKy =[]
     dataPieChart= {}
-    dataColumnChart = {}
+    dataBarChart = {}
     chart = null
     BarChart = null
 
@@ -96,9 +96,20 @@ class ThongKe {
             Pass : response.data.tiLePass,
             Fail : response.data.tiLeFail
         }
-        this.dataColumnChart = {
-            diem0 : response.data.soLuongDiem0,
-            diem1: 2
+        this.dataBarChart = {
+            Điểm0 : response.data.diem0,
+            Điểm1 : response.data.diem1,
+            Điểm2 : response.data.diem2,
+            Điểm3 : response.data.diem3,
+            Điểm4 : response.data.diem4,
+            Điểm5 : response.data.diem5,
+            Điểm6 : response.data.diem6,
+            Điểm7 : response.data.diem7,
+            Điểm8 : response.data.diem8,
+            Điểm9 : response.data.diem9,
+            Điểm10 : response.data.diem10,
+
+
         }
         this.createBarChart()
         this.createPieChart()
@@ -114,12 +125,11 @@ class ThongKe {
                 labels: Object.keys(this.dataPieChart)
                 ,
                 datasets: [{
-                    label: 'My First Dataset',
+                    label: 'ChartPassFailRates',
                     data: Object.values(this.dataPieChart),
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(50,205,50)',
+                        'rgb(255,215,0)'
                     ],
                 }]
             },
@@ -131,27 +141,33 @@ class ThongKe {
             this.BarChart.destroy()
         }
         const data = {
-            labels: Object.keys(this.dataPieChart),
+            labels: Object.keys(this.dataBarChart),
             datasets: [{
-                label: 'Phổ điểm',
-                data: Object.values(this.dataPieChart),
+                label: 'Phổ Điểm Chart',
+                data: Object.values(this.dataBarChart),
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
+                    'rgb(220,20,60)',
+                    'rgb(255,69,0)',
+                    'rgb(255,165,0)',
+                    'rgba(0,255,255,0.93)',
+                    'rgba(0,44,252,0.2)',
+                    'rgb(0,255,0)',
+                    'rgb(255,0,255)',
+                    'rgb(187,10,72)',
+                    'rgba(0,102,255,0.92)',
+                    'rgb(206,0,252)'
                 ],
                 borderColor: [
                     'rgb(255, 99, 132)',
                     'rgb(255, 159, 64)',
                     'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
+                    'rgb(75,143,192)',
                     'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)'
+                    'rgb(82,246,18)',
+                    'rgba(255,1,255,0.66)',
+                    'rgba(187,10,72,0.63)',
+                    'rgba(69,129,218,0.76)',
+                    'rgba(206,82,238,0.66)'
                 ],
                 borderWidth: 1
             }]
