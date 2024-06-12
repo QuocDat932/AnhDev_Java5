@@ -55,23 +55,7 @@ public class HocKiApi {
         } catch (Exception e) {
             result.put("success",false);
             result.put("data",null);
-            result.put("message","Call api Fail!");
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(result);
-    }
-
-    @PutMapping("putUpdateHocKi")
-    public ResponseEntity<?> doPutUpdateHocKi(@RequestBody HocKiDto hocKi) {
-        Map<String,Object> result =new HashMap();
-        try {
-            result.put("success",true);
-            result.put("data",hocKyService.updateHocKi(hocKi));
-            result.put("message","Cập nhật thành công!");
-        } catch (Exception e) {
-            result.put("success",false);
-            result.put("data",null);
-            result.put("message","Call api fail!");
+            result.put("message","Lưu thất bại!");
             e.printStackTrace();
         }
         return ResponseEntity.ok(result);

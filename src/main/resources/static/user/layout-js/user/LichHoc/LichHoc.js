@@ -113,44 +113,6 @@ class LichHoc {
         this.getListHocKy();
     }
 
-    btnCapNhat_click = async () => {
-        if (!this.validateForm()) {
-            return
-        }
-        let dataApiUpdate = {
-            maHk : $('#idMaHocKy').val(),
-            tenHocKi : $('#idTenHocKy').val(),
-            ngayBatDau : $('#idNgayBatDau').val(),
-            ngayKetThuc : $('#idNgayKetThuc').val()
-        }
-        let {data : response} = await axios.put('/java05/hocki-api/putUpdateHocKi', dataApiUpdate)
-        if (!response.success) {
-            Swal.fire({
-                title: response.message,
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-        if (response.data == null ) {
-            Swal.fire({
-                title: "Update thất bại",
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-        Swal.fire({
-            title: response.message,
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        this.getListHocKy();
-    }
-
     btnXoa_click = async () => {
         if (!$('#idMaHocKy').val()) {
             Swal.fire({
