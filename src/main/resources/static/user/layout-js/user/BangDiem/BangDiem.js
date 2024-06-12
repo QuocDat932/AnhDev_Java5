@@ -29,11 +29,11 @@ class BangDiem {
             diemThi : e.diemThi,
             ketQua : e.ketQua
         }))
-        await this.getListMaMonHoc()
+        await this.createSelectMonHoc()
         this.createTableBangDiem()
     }
 
-    getListMaMonHoc = async () => {
+    createSelectMonHoc = async () => {
         let {data : response} = await axios.get('/java05/monhoc-api/getAllMonHoc')
         if (!response.success) {
             Swal.fire({
@@ -45,15 +45,18 @@ class BangDiem {
             return
         }
         this.listMaMonHoc = response.data
+        let select = `<option value="0"></option>`
+        this.listMaMonHoc.forEach((monHoc, index) =>{
+            select +=`<option value="monHoc.maMonHoc">${monHoc.maMonHoc}</option>`
+        })
+        $('.form-select').html(select)
     }
 
     createTableBangDiem = () => {
-        // Hủy khởi tạo DataTable nếu nó đã tồn tại
         if ($.fn.dataTable.isDataTable('#tableBangDiem')) {
             $('#tableBangDiem').DataTable().destroy();
         }
         let body = ``
-        let select = `<option value="0"></option>`
         this.listResult.forEach((e, index) => {
             body +=   `<tr>
                            <td class="bg-transparent text-center">${index+1}</td> 
@@ -67,11 +70,7 @@ class BangDiem {
         })
         let footer = `</tbody></table>`
         let result = body +footer
-        this.listMaMonHoc.forEach((monHoc, index) =>{
-            select +=`<option value="index+1">${monHoc.maMonHoc}</option>`
-        })
         $('.tableBangDiem').html(result)
-        $('.form-select').html(select)
         let table = new DataTable('#tableBangDiem', {
             searching: false,
             info: false,
@@ -81,18 +80,47 @@ class BangDiem {
         })
         $('.dt-length').hide()
         let selt = this
-        //Gán lại sự kiện double click cho hàng trong bảng
         table.off('dblclick').on('dblclick', 'tbody tr', function () {
             let data = table.row(this).index();
             selt.fillDataToForm(selt.listResult[data])
             selt.hasSysId = selt.listResult[data].sysId;
-            $('#btnCapNhat').prop('disabled', false)
-            $('#btnLuu').prop('disabled', true)
-            $('#btnXoa').prop('disabled', false)
         });
-        $('#btnCapNhat').prop('disabled', true)
-        $('#btnLuu').prop('disabled', false)
-        $('#btnXoa').prop('disabled', true)
+        this.fillDataToForm(this.listResult[0])
+    }
+
+    filterBangDiem = async () =>{
+        let param = {
+            mssv : $('#idFilterMssv').val(),
+            maMonHoc : $('#idFilterMonHoc option:selected').text(),
+            ketQua : 'Failed'
+        }
+        if(!$('#idFilterFail').prop('checked')){
+            param.ketQua = ''
+        } else {
+            param.ketQua = 'Failed'
+        }
+        let {data: response} = await axios.get('/java05/lichsuhoctap-api/getListBangDiemByFilter',
+            {params: param})
+        if (response.data.length === 0) {
+            Swal.fire({
+                title: 'Không tìm thấy sinh viên',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        this.listResult = response.data.map(e => ({
+            sysId: e.sysId,
+            mssv: e.mssv.mssv,
+            hoVaTen : e.mssv.hoVaTen,
+            lanThi : e.lanThi,
+            monHoc : e.monHoc.maMonHoc,
+            hocKi : e.hocKi.ma_hk,
+            diemThi : e.diemThi,
+            ketQua : e.ketQua
+        }))
+        this.createTableBangDiem();
     }
 
     fillDataToForm = (bangDiem) => {
@@ -102,46 +130,27 @@ class BangDiem {
         $('#idHocKy').val(bangDiem.hocKi)
         $('#idLanThi').val(bangDiem.lanThi)
         $('#idDiemThi').val(bangDiem.diemThi)
-        $('#idKetQua').text(bangDiem.ketQua)
-        if(bangDiem.diemThi >= 5){
-            $('#idKetQua').attr('class', 'badge text-bg-success fs-4')
-        } else {
-            $('#idKetQua').attr('class', 'badge text-bg-danger fs-4')
-        }
+        this.setResult()
     }
 
-    xuatKetQua = () =>{
+    setResult = () =>{
         let inputDiem = $('#idDiemThi').val()
-        this.turnOffXacNhan();
-        if (inputDiem < 5 && inputDiem >= 0 && inputDiem != '') {
-            $('#idKetQua').text("Failed").attr('class', 'badge text-bg-danger fs-4')
+        if (inputDiem < 5 && inputDiem >= 0 && inputDiem !== '') {
+            $('#idKetQua').text("Rớt môn").attr('class', 'badge text-bg-danger fs-4').val("Failed")
         } else if (inputDiem >=5 && inputDiem <= 10) {
-            $('#idKetQua').text("Passed").attr('class', 'badge text-bg-success fs-4')
+            $('#idKetQua').text("Qua môn").attr('class', 'badge text-bg-success fs-4').val("Passed")
         } else {
-            $('#idKetQua').text("Kết quả").attr('class', 'badge text-bg-danger fs-4')
+            $('#idKetQua').text("Kết quả").attr('class', 'badge text-bg-info fs-4')
         }
     }
 
     clearForm = () =>{
         this.hasSysId = null
         this.fillDataToForm({})
-        $('#btnCapNhat').prop('disabled', true)
-        $('#btnLuu').prop('disabled', false)
-        $('#btnXoa').prop('disabled', true)
-        $('#idKetQua').text('Kết quả').attr('class', 'badge text-bg-danger fs-4')
-        $('#idXacNhan').prop('checked', false)
+        $('#idKetQua').text("Kết quả").attr('class', 'badge text-bg-info fs-4')
     }
 
     btnLuu_click = async (isUpdate) => {
-        if( !$('#idXacNhan').prop('checked')){
-            Swal.fire({
-                title: 'Vui lòng chọn xác nhận',
-                icon: 'warning',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
         if (!this.validateForm()) {
             return
         }
@@ -150,7 +159,7 @@ class BangDiem {
             mssv : $('#idMssv').val(),
             lanThi : $('#idLanThi').val(),
             diemThi : $('#idDiemThi').val(),
-            ketQua : $('#idKetQua').text(),
+            ketQua : $('#idKetQua').val(),
             monHoc : $('#idMonHoc').val(),
             hocKi : $('#idHocKy').val()
         }
@@ -175,15 +184,6 @@ class BangDiem {
     }
 
     btnXoa_click = async () =>{
-        if( !$('#idXacNhan').prop('checked')){
-            Swal.fire({
-                title: 'Vui lòng chọn xác nhận',
-                icon: 'warning',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
         Swal.fire({
             title: "Chắc chắn muốn xóa?",
             icon: "warning",
@@ -217,9 +217,22 @@ class BangDiem {
         });
     }
 
+    verifyForm = () => {
+        let value = $('#idXacNhan').prop('checked')
+        $('#btnLuu').prop('disabled', !value)
+        $('#btnCapNhat').prop('disabled', !value)
+        $('#btnXoa').prop('disabled', !value)
+
+        $('#idMssv').prop('disabled', value)
+        $('#idHoTen').prop('disabled', value)
+        $('#idMonHoc').prop('disabled', value)
+        $('#idHocKy').prop('disabled', value)
+        $('#idLanThi').prop('disabled', value)
+        $('#idDiemThi').prop('disabled', value)
+    }
+
     validateForm = () => {
         if (!$('#idMssv').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Mã số sinh viên còn trống',
                 icon: 'error',
@@ -229,7 +242,6 @@ class BangDiem {
             return false
         }
         if ($('#idMssv').val().length >= 8) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Mã số sinh viên quá dài',
                 icon: 'error',
@@ -239,7 +251,6 @@ class BangDiem {
             return false
         }
         if (!$('#idHoTen').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Họ tên còn trống',
                 icon: 'error',
@@ -249,7 +260,6 @@ class BangDiem {
             return false
         }
         if (!$('#idMonHoc').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Môn học còn trống',
                 icon: 'error',
@@ -259,7 +269,6 @@ class BangDiem {
             return false
         }
         if (!$('#idHocKy').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Học Kỳ còn trống',
                 icon: 'error',
@@ -269,7 +278,6 @@ class BangDiem {
             return false
         }
         if (!$('#idLanThi').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Lần thi còn trống',
                 icon: 'error',
@@ -279,7 +287,6 @@ class BangDiem {
             return false
         }
         if (!$('#idDiemThi').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Điểm thi không hợp lệ',
                 icon: 'error',
@@ -289,53 +296,5 @@ class BangDiem {
             return false
         }
         return true
-    }
-
-    turnOffXacNhan = () => {
-        $('#idXacNhan').prop('checked', false)
-    }
-
-    getListBangDiemByFilter = async (mssv, maMonHoc, ketQua) => {
-        let param = {
-            mssv : mssv,
-            maMonHoc: maMonHoc,
-            ketQua : ketQua
-        }
-        let {data: response} = await axios.get('/java05/lichsuhoctap-api/getListBangDiemByFilter',
-            {params: param})
-        if (!response.success) {
-            Swal.fire({
-                title: 'Không tìm thấy sinh viên',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-        this.listResult = response.data.map(e => ({
-            sysId: e.sysId,
-            mssv: e.mssv.mssv,
-            hoVaTen : e.mssv.hoVaTen,
-            lanThi : e.lanThi,
-            monHoc : e.monHoc.maMonHoc,
-            hocKi : e.hocKi.ma_hk,
-            diemThi : e.diemThi,
-            ketQua : e.ketQua
-        }))
-        this.createTableBangDiem();
-    }
-
-    filterBangDiem = async () =>{
-        let param = {
-            filterMssv : $('#idFilterMssv').val(),
-            filterMonHoc : $('#idFilterMonHoc option:selected').text(),
-            filterCheck : 'Failed'
-        }
-        if(!$('#idFilterFail').prop('checked')){
-            param.filterCheck = ''
-        } else {
-            param.filterCheck = 'Failed'
-        }
-        this.getListBangDiemByFilter(param.filterMssv, param.filterMonHoc, param.filterCheck)
     }
 }

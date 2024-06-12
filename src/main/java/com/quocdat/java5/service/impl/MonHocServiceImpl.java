@@ -1,8 +1,11 @@
 package com.quocdat.java5.service.impl;
 
+import com.quocdat.java5.convert.HocKiConvert;
 import com.quocdat.java5.convert.MonHocConvert;
 import com.quocdat.java5.data.dto.request.MonHocDto;
 import com.quocdat.java5.data.entity.MonHocE;
+import com.quocdat.java5.data.model.HocKiM;
+import com.quocdat.java5.data.model.MonHocM;
 import com.quocdat.java5.repository.MonHocRepo;
 import com.quocdat.java5.service.MonHocService;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +19,19 @@ public class MonHocServiceImpl implements MonHocService {
     private final MonHocRepo monHocRepo;
 
     @Override
-    public List<MonHocE> getAllMonHoc() {
-        return monHocRepo.findAll();
+    public List<MonHocM> getAllMonHoc() {
+        return MonHocM.convertListMonHocToListMonHocM(monHocRepo.findAll());
     }
 
     @Override
-    public MonHocE SaveMonHoc(MonHocDto monHoc){
-        MonHocE monHocE = MonHocConvert.convertMonHocDtoToMonHocE(monHoc);
-
-        return monHocRepo.save(monHocE);
+    public MonHocM SaveMonHoc(MonHocDto monHoc){
+        if(!existsMonHocByMaMonHoc(monHoc.getMaMonHoc())){
+            return MonHocM.convertMonHoctoMonHocM(
+                    monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
+            );
+        }else {
+            return null;
+        }
     }
 
     @Override
@@ -39,7 +46,23 @@ public class MonHocServiceImpl implements MonHocService {
     }
 
     @Override
-    public List<MonHocE> getMonHocByMaMonHoc(String maMonHoc) {
-        return monHocRepo.getMonHocByMaMonHoc(maMonHoc +"%");
+    public List<MonHocM> getMonHocByMaMonHoc(String maMonHoc) {
+        return MonHocM.convertListMonHocToListMonHocM(monHocRepo.getMonHocByMaMonHoc(maMonHoc +"%"));
+    }
+
+    @Override
+    public boolean existsMonHocByMaMonHoc(String maMonHoc) {
+        return monHocRepo.existsMonHocByMaMonHoc(maMonHoc);
+    }
+
+    @Override
+    public MonHocM updateMonHoc(MonHocDto monHoc) {
+        if(existsMonHocByMaMonHoc(monHoc.getMaMonHoc())){
+            return MonHocM.convertMonHoctoMonHocM(
+                    monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
+            );
+        }else {
+            return null;
+        }
     }
 }

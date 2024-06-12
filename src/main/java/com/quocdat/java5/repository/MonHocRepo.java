@@ -19,4 +19,5 @@ public interface MonHocRepo extends JpaRepository<MonHocE, String> {
     @Query(value = "select mh.ma_mon_hoc, mh.ten_mon_hoc, mh.so_tin_chi from mon_hoc mh where mh.ma_mon_hoc like ?1%", nativeQuery = true)
     List<MonHocE> getMonHocByMaMonHoc(String maMonHoc);
     MonHocE save(MonHocDto monHocDto);
+    boolean existsMonHocByMaMonHoc(String maMonHoc);
 }

@@ -19,10 +19,11 @@
                     <label for="idFilterNgay" class="form-label m-0 fw-bold">Ngày</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="date" id="idFilterNgay" class="form-control" onchange="serviceLichHoc.getListHocKiByTime()">
+                    <input type="date" id="idFilterNgay" class="form-control">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-dark rounded rounded-circle"><i class="fa-solid fa-rotate-right" onclick="serviceLichHoc.reset_filter()"></i></button>
+                    <button class="btn btn-dark rounded rounded-circle" onclick="serviceLichHoc.getListHocKiByTime()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-dark rounded rounded-circle" onclick="serviceLichHoc.reset_filter()"><i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             </div>
             <div class="tableLichHoc">

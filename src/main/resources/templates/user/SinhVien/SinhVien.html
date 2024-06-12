@@ -57,21 +57,21 @@
             <h2 class="text-center">Thông tin chi tiết</h2>
             <div class="mb-3">
                 <label for="idMssv" class="form-label fw-bold">Mã số sinh viên</label>
-                <input type="text" class="form-control" id="idMssv" onchange="serviceSinhVien.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idMssv">
             </div>
             <div class="mb-3">
                 <label for="idHoTen" class="form-label fw-bold">Họ tên</label>
-                <input type="text" class="form-control" id="idHoTen" onchange="serviceSinhVien.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idHoTen">
             </div>
             <div class="mb-3">
                 <label for="idChuyenNganh" class="form-label fw-bold">Chuyên ngành</label>
-                <input type="text" class="form-control" id="idChuyenNganh" onchange="serviceSinhVien.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idChuyenNganh">
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idHocKy" class="form-label fw-bold">Học kỳ</label>
-                        <input type="text" class="form-control" id="idHocKy" onchange="serviceSinhVien.turnOffXacNhan()">
+                        <input type="text" class="form-control" id="idHocKy">
                     </div>
                 </div>
                 <div class="col-6">
@@ -92,7 +92,7 @@
             </div>
             <div class="mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="idXacNhan" onchange="serviceSinhVien.validateForm()">
+                    <input class="form-check-input" type="checkbox" id="idXacNhan" onchange="serviceSinhVien.verifyForm()">
                     <label class="form-check-label" for="idXacNhan">
                         Xác nhận
                     </label>
@@ -100,9 +100,8 @@
             </div>
             <div class="mb-3 text-end">
                 <button class="btn btn-primary mb-3" onclick="serviceSinhVien.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
-                <button class="btn btn-success mb-3" id="btnLuu" onclick="serviceSinhVien.btnLuu_click()"><i class="fa-solid fa-plus me-3"></i>Lưu</button>
-                <button class="btn btn-success mb-3" id="btnCapNhat" onclick="serviceSinhVien.btnCapNhat_click()"><i class="fa-solid fa-download me-3"></i>Cập nhật</button>
-                <button class="btn btn-danger mb-3" id="btnXoa" onclick="serviceSinhVien.btnXoa_click()"><i class="fa-solid fa-trash me-3"></i>Xóa</button>
+                <button class="btn btn-success mb-3" id="btnCapNhat" onclick="serviceSinhVien.btnLuu_click()" disabled><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                <button class="btn btn-danger mb-3" id="btnXoa" onclick="serviceSinhVien.btnXoa_click()" disabled><i class="fa-solid fa-trash me-3"></i>Xóa</button>
             </div>
         </div>
     </div>
