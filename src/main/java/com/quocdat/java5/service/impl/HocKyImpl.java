@@ -39,7 +39,7 @@ public class HocKyImpl implements HocKiService {
                     repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
             );
         }else {
-            return null;
+            return updateHocKi(hocKiDto);
         }
     }
 
@@ -50,13 +50,8 @@ public class HocKyImpl implements HocKiService {
 
     @Override
     public HocKiM updateHocKi(HocKiDto hocKiDto) {
-        if(existsHocKyByMaHk(hocKiDto.getMaHk())){
-            return HocKiM.convertHocKyEToHocKyM(
-                    repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
-            );
-        }else {
-            return null;
-        }
+        return HocKiM.convertHocKyEToHocKyM(
+                repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto)));
     }
 
     @Override
