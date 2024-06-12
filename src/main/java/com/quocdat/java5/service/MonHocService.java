@@ -10,9 +10,7 @@ import java.util.List;
 
 public interface MonHocService {
     List<MonHocM> getAllMonHoc();
-    MonHocM SaveMonHoc(MonHocDto monHoc);
+    MonHocM postSaveMonHoc(MonHocDto monHoc);
     String deleteByMaMonHoc(String maMonHoc);
     List<MonHocM> getMonHocByMaMonHoc(String maMonHoc);
-    boolean existsMonHocByMaMonHoc(String maMonHoc);
-    MonHocM updateMonHoc(MonHocDto monHoc);
 }
