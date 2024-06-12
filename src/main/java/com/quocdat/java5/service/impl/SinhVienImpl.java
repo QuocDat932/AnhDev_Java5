@@ -32,18 +32,9 @@ public class SinhVienImpl implements SinhVienService {
 
     @Transactional
     @Override
-    public SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException{
-        if(repo.existsSinhVienByMssv(sinhVienDto.getMssv())) throw new SQLException("Sinh Vien Already Exists");
+    public SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto){
         return SinhVienM.convertSinhVienEToSinhVienM(
-                repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto)));
-    }
-
-    @Transactional
-    @Override
-    public SinhVienM putUpdateSinhVien(SinhVienDto sinhVienDto) throws SQLException{
-        if(!repo.existsSinhVienByMssv(sinhVienDto.getMssv())) throw new SQLException("Sinh Vien Not Exists");
-        return SinhVienM.convertSinhVienEToSinhVienM(
-                repo.save(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto)));
+                repo.saveAndFlush(SinhVienConvert.convertSinhVienDtotoSinhVienE(sinhVienDto)));
     }
 
     @Transactional

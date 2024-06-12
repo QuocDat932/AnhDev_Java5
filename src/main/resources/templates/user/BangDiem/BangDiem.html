@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="idFilterFail">
+                        <input class="form-check-input" type="checkbox" value="" id="idFilterFail" onchange="serviceBangDiem.filterBangDiem()">
                         <label class="form-check-label" for="idFilterFail">
                             Chưa qua môn
                         </label>
@@ -58,27 +58,27 @@
             <h2 class="text-center">Thông tin chi tiết</h2>
             <div class="mb-3">
                 <label for="idMssv" class="form-label fw-bold">Mã số sinh viên</label>
-                <input type="text" class="form-control" id="idMssv" onchange="serviceBangDiem.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idMssv">
             </div>
             <div class="mb-3">
                 <label for="idHoTen" class="form-label fw-bold">Họ tên</label>
-                <input type="text" class="form-control" id="idHoTen" onchange="serviceBangDiem.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idHoTen">
             </div>
             <div class="mb-3">
                 <label for="idMonHoc" class="form-label fw-bold">Môn học</label>
-                <input type="text" class="form-control" id="idMonHoc" onchange="serviceBangDiem.turnOffXacNhan()">
+                <input type="text" class="form-control" id="idMonHoc">
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idHocKy" class="form-label fw-bold">Học kỳ</label>
-                        <input type="text" class="form-control" id="idHocKy" onchange="serviceBangDiem.turnOffXacNhan()">
+                        <input type="text" class="form-control" id="idHocKy">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idLanThi" class="form-label fw-bold">Lần thi</label>
-                        <input type="text" class="form-control" id="idLanThi" onchange="serviceBangDiem.turnOffXacNhan()">
+                        <input type="text" class="form-control" id="idLanThi">
                     </div>
                 </div>
             </div>
@@ -86,21 +86,21 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idDiemThi" class="form-label fw-bold">Điểm thi</label>
-                        <input type="text" class="form-control" id="idDiemThi" onchange="serviceBangDiem.xuatKetQua()">
+                        <input type="text" class="form-control" id="idDiemThi" onchange="serviceBangDiem.setResult()">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idDiemThi" class="form-label fw-bold">Kết quả</label>
                         <div>
-                            <span id="idKetQua" class="badge text-bg-danger fs-4">Kết quả</span>
+                            <span id="idKetQua" class="badge text-bg-primary fs-4">Kết quả</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="idXacNhan">
+                    <input class="form-check-input" type="checkbox" id="idXacNhan" onchange="serviceBangDiem.verifyForm()">
                     <label class="form-check-label" for="idXacNhan">
                         Xác nhận
                     </label>
@@ -109,9 +109,9 @@
 
             <div class="mb-3 text-end">
                 <button class="btn btn-primary mb-3" onclick="serviceBangDiem.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
-                <button class="btn btn-success mb-3" id="btnLuu" onclick="serviceBangDiem.btnLuu_click(false)"><i class="fa-solid fa-download me-3"></i>Lưu</button>
-                <button class="btn btn-success mb-3" id="btnCapNhat" onclick="serviceBangDiem.btnLuu_click(true)"><i class="fa-solid fa-plus me-3"></i>Cập nhật</button>
-                <button class="btn btn-danger mb-3" id="btnXoa" onclick="serviceBangDiem.btnXoa_click()"><i class="fa-solid fa-trash me-3"></i>Xóa</button>
+                <button class="btn btn-success mb-3" id="btnLuu" onclick="serviceBangDiem.btnLuu_click(false)" disabled><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                <button class="btn btn-success mb-3" id="btnCapNhat" onclick="serviceBangDiem.btnLuu_click(true)" disabled><i class="fa-solid fa-plus me-3"></i>Cập nhật</button>
+                <button class="btn btn-danger mb-3" id="btnXoa" onclick="serviceBangDiem.btnXoa_click()" disabled><i class="fa-solid fa-trash me-3"></i>Xóa</button>
             </div>
         </div>
     </div>
