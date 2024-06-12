@@ -30,7 +30,7 @@ public class MonHocServiceImpl implements MonHocService {
                     monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
             );
         }else {
-            return null;
+            return updateMonHoc(monHoc);
         }
     }
 
