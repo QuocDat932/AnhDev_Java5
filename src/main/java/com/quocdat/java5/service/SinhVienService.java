@@ -32,15 +32,6 @@ public interface SinhVienService {
     SinhVienM postSaveSinhVien(SinhVienDto sinhVienDto) throws SQLException;
 
     /**
-     * Cập nhật thông tin sinh viên
-     *
-     * @param sinhVienDto Đối tượng chứa thông tin sinh viên
-     * @return SinhVienDto
-     * @throws SQLException
-     */
-    SinhVienM putUpdateSinhVien(SinhVienDto sinhVienDto) throws SQLException;
-
-    /**
      * Xóa thông tin sinh viên
      *
      * @param mssv Mã số sinh viên

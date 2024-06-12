@@ -1,9 +1,9 @@
 class SinhVien {
     listSinhVien = []
     listChuyenNganh = []
+
     loadInit = async () => {
         await this.getListSinhVien()
-
     }
 
     getListSinhVien = async () => {
@@ -24,31 +24,15 @@ class SinhVien {
             gioiTinh : e.gioiTinh,
             hocKy : e.hocKi.ma_hk
         }))
-        await this.getListChuyenNganh()
+        await this.createSelectChuyenNganh()
         this.createTableSinhVien()
     }
 
-    getListChuyenNganh = async () => {
-        let {data : response} = await axios.get('/java05/sinhvien-api/getListChuyenNganh')
-        if (!response.success) {
-            Swal.fire({
-                title: response.message,
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-        this.listChuyenNganh = response.data;
-    }
-
     createTableSinhVien = () => {
-        // // Hủy khởi tạo DataTable nếu nó đã tồn tại
         if ($.fn.dataTable.isDataTable('#tableSinhVien')) {
             $('#tableSinhVien').DataTable().destroy();
         }
         let body = ``
-        let select = `<option value="0"></option>`
         this.listSinhVien.forEach((e, index) => {
             body +=   `<tr>
                            <td class="bg-transparent text-center">${index+1}</td> 
@@ -59,13 +43,9 @@ class SinhVien {
                            <td class="bg-transparent text-center">${e.hocKy}</td> 
                        </tr>`
         })
-        this.listChuyenNganh.forEach((String, index) =>{
-            select +=`<option value="index+1">${String}</option>`
-        })
         let footer = `</tbody></table>`
         let result = body +footer
         $('.tableSinhVien').html(result)
-        $('.form-select').html(select)
         let table = new DataTable('#tableSinhVien', {
             searching: false,
             info: false,
@@ -79,57 +59,37 @@ class SinhVien {
         table.off('dblclick').on('dblclick', 'tbody tr', function () {
             let data = table.row(this).index();
             selt.fillDataToForm(selt.listSinhVien[data])
-            $('#btnCapNhat').prop('disabled', false)
-            $('#btnLuu').prop('disabled', true)
-            $('#btnXoa').prop('disabled', false)
         });
-        $('#btnCapNhat').prop('disabled', true)
-        $('#btnLuu').prop('disabled', false)
-        $('#btnXoa').prop('disabled', true)
+        this.fillDataToForm(this.listSinhVien[0])
     }
 
-    getSinhVienByMssv = async (mssv) => {
-        let param = {
-            mssv: mssv
-        }
-        let {data: response} = await axios.get('java05/sinhvien-api/getSinhVienByMSSV',
-            {params: param})
+    createSelectChuyenNganh = async () => {
+        let {data : response} = await axios.get('/java05/sinhvien-api/getListChuyenNganh')
         if (!response.success) {
             Swal.fire({
-                title: 'Không tìm thấy sinh viên',
+                title: response.message,
                 icon: 'error',
                 showConfirmButton: false,
                 timer: 1500
             })
             return
         }
-        this.listSinhVien = response.data.map(e => ({
-            mssv : e.mssv,
-            hoVaTen : e.hoVaTen,
-            chuyenNganh : e.chuyenNganh,
-            gioiTinh : e.gioiTinh,
-            hocKy : e.hocKi.ma_hk
-        }))
-        this.createTableSinhVien();
+        this.listChuyenNganh = response.data;
+        let select = `<option value=""></option>`
+        this.listChuyenNganh.forEach((String, index) =>{
+            select +=`<option value="String">${String}</option>`
+        })
+        $('.form-select').html(select)
     }
 
-    getListSinhVienByFilter = async (mssv, hoVaTen, chuyenNganh) => {
+    fillterSinhVien = async () => {
         let param = {
-            mssv : mssv,
-            hoVaTen: hoVaTen,
-            chuyenNganh : chuyenNganh
+            mssv : $('#idFilterMssv').val(),
+            hoVaTen : $('#idFilterTen').val(),
+            chuyenNganh : $('#idFilterChuyenNganh option:selected').text()
         }
         let {data: response} = await axios.get('/java05/sinhvien-api/getListSinhVienByFilter',
             {params: param})
-        if (!response.success) {
-            Swal.fire({
-                title: 'Không tìm thấy sinh viên',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
         this.listSinhVien = response.data.map(e => ({
             mssv : e.mssv,
             hoVaTen : e.hoVaTen,
@@ -137,6 +97,15 @@ class SinhVien {
             gioiTinh : e.gioiTinh,
             hocKy : e.hocKi.ma_hk
         }));
+        if (response.data.length === 0) {
+            Swal.fire({
+                title: 'Không tìm thấy sinh viên',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
         this.createTableSinhVien();
     }
 
@@ -155,22 +124,9 @@ class SinhVien {
     clearForm = () => {
         this.fillDataToForm({})
         $('#idNam').prop('checked', true)
-        $('#idXacNhan').prop('checked', false)
-        $('#btnCapNhat').prop('disabled', true)
-        $('#btnLuu').prop('disabled', false)
-        $('#btnXoa').prop('disabled', true)
     }
 
     btnLuu_click = async () => {
-        if( !$('#idXacNhan').prop('checked')){
-            Swal.fire({
-                title: 'Vui lòng chọn xác nhận',
-                icon: 'warning',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
         if (!this.validateForm()) {
             return
         }
@@ -185,74 +141,23 @@ class SinhVien {
             dataApiSave)
         if (!response.success) {
             Swal.fire({
-                title: 'Sinh viên đã tồn tại',
+                title: 'Lưu không thành công',
                 icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-
-        } else{
-            Swal.fire({
-                title: 'Lưu thông tin sinh viên thành công',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-            })
-
-        }
-        await this.getListSinhVien()
-    }
-
-    btnCapNhat_click = async () => {
-        if( !$('#idXacNhan').prop('checked')){
-            Swal.fire({
-                title: 'Vui lòng chọn xác nhận',
-                icon: 'warning',
                 showConfirmButton: false,
                 timer: 1500
             })
             return
         }
-        if (!this.validateForm()) {
-            return
-        }
-        let dataApiSave = {
-            mssv : $('#idMssv').val(),
-            hoVaTen : $('#idHoTen').val(),
-            chuyenNganh : $('#idChuyenNganh').val(),
-            gioiTinh : $('#idNam').prop('checked'),
-            hocKi : $('#idHocKy').val()
-        }
-        let {data : response} = await axios.put('/java05/sinhvien-api/updateSinhVien', dataApiSave)
-        if (!response.success) {
-            Swal.fire({
-                title: 'Sinh viên không tồn tại',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        } else{
-            Swal.fire({
-                title: 'Cập nhật thông tin thành công',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-            })
-
-        }
+        Swal.fire({
+            title: 'Lưu thông tin sinh viên thành công',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+        })
         await this.getListSinhVien()
     }
 
     btnXoa_click = async () => {
-        if( !$('#idXacNhan').prop('checked')){
-            Swal.fire({
-                title: 'Vui lòng chọn xác nhận',
-                icon: 'warning',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
         if (!$('#idMssv').val()) {
             Swal.fire({
                 title: 'Chưa có mã số sinh viên',
@@ -271,11 +176,9 @@ class SinhVien {
             confirmButtonText: "Xóa",
             cancelButtonText: "Vẫn giữ"
         }).then(async () => {
-
             let param = {
                 mssv : $('#idMssv').val()
             }
-
             let {data: response} = await axios.delete('/java05/sinhvien-api/deleteSinhVienByMssv', {params: param})
             if (!response.success) {
                 Swal.fire({
@@ -293,17 +196,25 @@ class SinhVien {
                 timer: 1500
             })
             this.clearForm()
-            await this.getListSinhVien()
+            await this.createTableSinhVien()
         });
     }
 
-    turnOffXacNhan = () => {
-        $('#idXacNhan').prop('checked', false)
+    verifyForm = () => {
+        let value = $('#idXacNhan').prop('checked')
+        $('#btnLuu').prop('disabled', !value)
+        $('#btnXoa').prop('disabled', !value)
+
+        $('#idMssv').prop('disabled', value)
+        $('#idHoTen').prop('disabled', value)
+        $('#idChuyenNganh').prop('disabled', value)
+        $('#idHocKy').prop('disabled', value)
+        $('#idNam').prop('disabled', value)
+        $('#idNu').prop('disabled', value)
     }
 
     validateForm = () => {
         if (!$('#idMssv').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Mã số sinh viên còn trống',
                 icon: 'error',
@@ -313,7 +224,6 @@ class SinhVien {
             return false
         }
         if ($('#idMssv').val().length >= 8) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Mã số sinh viên quá dài',
                 icon: 'error',
@@ -323,7 +233,6 @@ class SinhVien {
             return false
         }
         if (!$('#idHoTen').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Họ tên còn trống',
                 icon: 'error',
@@ -333,7 +242,6 @@ class SinhVien {
             return false
         }
         if (!$('#idChuyenNganh').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Chuyên ngành còn trống',
                 icon: 'error',
@@ -344,7 +252,6 @@ class SinhVien {
         }
 
         if (!$('#idHocKy').val()) {
-            this.turnOffXacNhan()
             Swal.fire({
                 title: 'Học Kỳ còn trống',
                 icon: 'error',
@@ -354,14 +261,5 @@ class SinhVien {
             return false
         }
         return true
-    }
-
-    fillterSinhVien = async () => {
-        let param = {
-            filterMssv : $('#idFilterMssv').val(),
-            filterHoVaTen : $('#idFilterTen').val(),
-            filterChuyenNganh : $('#idFilterChuyenNganh option:selected').text()
-        }
-        this.getListSinhVienByFilter(param.filterMssv, param.filterHoVaTen, param.filterChuyenNganh)
     }
 }
