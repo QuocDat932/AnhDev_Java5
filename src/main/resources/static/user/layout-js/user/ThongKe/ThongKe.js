@@ -97,17 +97,17 @@ class ThongKe {
             Fail : response.data.tiLeFail
         }
         this.dataBarChart = {
-            Điểm0 : response.data.diem0,
-            Điểm1 : response.data.diem1,
-            Điểm2 : response.data.diem2,
-            Điểm3 : response.data.diem3,
-            Điểm4 : response.data.diem4,
-            Điểm5 : response.data.diem5,
-            Điểm6 : response.data.diem6,
-            Điểm7 : response.data.diem7,
-            Điểm8 : response.data.diem8,
-            Điểm9 : response.data.diem9,
-            Điểm10 : response.data.diem10,
+            "Điểm 0" : response.data.diem0,
+            "Điểm 1" : response.data.diem1,
+            "Điểm 2" : response.data.diem2,
+            "Điểm 3" : response.data.diem3,
+            "Điểm 4" : response.data.diem4,
+            "Điểm 5" : response.data.diem5,
+            "Điểm 6" : response.data.diem6,
+            "Điểm 7" : response.data.diem7,
+            "Điểm 8" : response.data.diem8,
+            "Điểm 9" : response.data.diem9,
+            "Điểm 10" : response.data.diem10,
 
 
         }
@@ -128,8 +128,8 @@ class ThongKe {
                     label: 'ChartPassFailRates',
                     data: Object.values(this.dataPieChart),
                     backgroundColor: [
-                        'rgb(50,205,50)',
-                        'rgb(255,215,0)'
+                        'rgb(140,238,76)',
+                        'rgb(238,78,78)'
                     ],
                 }]
             },
@@ -146,28 +146,13 @@ class ThongKe {
                 label: 'Phổ Điểm Chart',
                 data: Object.values(this.dataBarChart),
                 backgroundColor: [
-                    'rgb(220,20,60)',
-                    'rgb(255,69,0)',
-                    'rgb(255,165,0)',
-                    'rgba(0,255,255,0.93)',
-                    'rgba(0,44,252,0.2)',
-                    'rgb(0,255,0)',
-                    'rgb(255,0,255)',
-                    'rgb(187,10,72)',
-                    'rgba(0,102,255,0.92)',
-                    'rgb(206,0,252)'
+                    'rgba(58, 190, 249, 0.8)',
+                    'rgb(53, 114, 239, 0.8)'
+
                 ],
                 borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75,143,192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(82,246,18)',
-                    'rgba(255,1,255,0.66)',
-                    'rgba(187,10,72,0.63)',
-                    'rgba(69,129,218,0.76)',
-                    'rgba(206,82,238,0.66)'
+                    'rgb(58, 190, 249)',
+                    'rgb(53, 114, 239)'
                 ],
                 borderWidth: 1
             }]
@@ -178,7 +163,10 @@ class ThongKe {
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks:{
+                            stepSize:1
+                        }
                     }
                 }
             },
