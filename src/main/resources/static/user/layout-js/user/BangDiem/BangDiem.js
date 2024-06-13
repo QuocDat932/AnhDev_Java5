@@ -2,6 +2,7 @@ class BangDiem {
     listResult = []
     hasSysId = null
     listMaMonHoc = []
+    listHocKy = []
 
     loadInit = async () => {
         await this.getListResult()
@@ -9,7 +10,6 @@ class BangDiem {
 
     getListResult = async () => {
         let {data : response} = await axios.get('/java05/lichsuhoctap-api/getAllLichSuHocTap')
-
         if (!response.success) {
             Swal.fire({
                 title: response.message,
@@ -24,13 +24,35 @@ class BangDiem {
             mssv: e.mssv.mssv,
             hoVaTen : e.mssv.hoVaTen,
             lanThi : e.lanThi,
-            monHoc : e.monHoc.maMonHoc,
-            hocKi : e.hocKi.ma_hk,
+            maMonHoc : e.monHoc.maMonHoc,
+            tenMonHoc : e.monHoc.tenMonHoc,
+            maHocKi : e.hocKi.maHk,
+            tenHocKi : e.hocKi.tenHocKi,
             diemThi : e.diemThi,
             ketQua : e.ketQua
         }))
         await this.createSelectMonHoc()
+        await this.createSelectHocKy()
         this.createTableBangDiem()
+    }
+
+    createSelectHocKy = async  () => {
+        let {data : response} = await axios.get('/java05/hocki-api/getAllHocKy')
+        if (!response.success) {
+            Swal.fire({
+                title: response.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        this.listHocKy = response.data
+        let select = ``
+        this.listHocKy.forEach((hocKi) =>{
+            select +=`<option value="${hocKi.maHk}">${hocKi.tenHocKi}</option>`
+        })
+        $('#idHocKy').html(select)
     }
 
     createSelectMonHoc = async () => {
@@ -45,11 +67,12 @@ class BangDiem {
             return
         }
         this.listMaMonHoc = response.data
-        let select = `<option value="0"></option>`
-        this.listMaMonHoc.forEach((monHoc, index) =>{
-            select +=`<option value="monHoc.maMonHoc">${monHoc.maMonHoc}</option>`
+        let select = `<option value=""></option>`
+        this.listMaMonHoc.forEach((monHoc) =>{
+            select +=`<option value="${monHoc.maMonHoc}">${monHoc.tenMonHoc}</option>`
         })
-        $('.form-select').html(select)
+        $('#idFilterMonHoc').html(select)
+        $('#idMonHoc').html(select)
     }
 
     createTableBangDiem = () => {
@@ -63,8 +86,8 @@ class BangDiem {
                            <td class="bg-transparent text-center">${e.mssv}</td> 
                            <td class="bg-transparent text-center">${e.hoVaTen}</td> 
                            <td class="bg-transparent text-center">${e.lanThi}</td> 
-                           <td class="bg-transparent text-center">${e.monHoc}</td> 
-                           <td class="bg-transparent text-center">${e.hocKi}</td> 
+                           <td class="bg-transparent text-center" value="${e.maMonHoc}">${e.tenMonHoc}</td> 
+                           <td class="bg-transparent text-center" value="${e.maHocKi}">${e.tenHocKi}</td> 
                            <td class="bg-transparent text-center">${e.diemThi}</td> 
                        </tr>`
         })
@@ -91,17 +114,15 @@ class BangDiem {
     filterBangDiem = async () =>{
         let param = {
             mssv : $('#idFilterMssv').val(),
-            maMonHoc : $('#idFilterMonHoc option:selected').text(),
+            maMonHoc : $('#idFilterMonHoc option:selected').val(),
             ketQua : 'Failed'
         }
         if(!$('#idFilterFail').prop('checked')){
             param.ketQua = ''
-        } else {
-            param.ketQua = 'Failed'
         }
         let {data: response} = await axios.get('/java05/lichsuhoctap-api/getListBangDiemByFilter',
             {params: param})
-        if (response.data.length === 0) {
+        if (!response.data.length) {
             Swal.fire({
                 title: 'Không tìm thấy sinh viên',
                 icon: 'error',
@@ -115,8 +136,10 @@ class BangDiem {
             mssv: e.mssv.mssv,
             hoVaTen : e.mssv.hoVaTen,
             lanThi : e.lanThi,
-            monHoc : e.monHoc.maMonHoc,
-            hocKi : e.hocKi.ma_hk,
+            maMonHoc : e.monHoc.maMonHoc,
+            tenMonHoc : e.monHoc.tenMonHoc,
+            maHocKi : e.hocKi.maHk,
+            tenHocKi : e.hocKi.tenHocKi,
             diemThi : e.diemThi,
             ketQua : e.ketQua
         }))
@@ -126,8 +149,8 @@ class BangDiem {
     fillDataToForm = (bangDiem) => {
         $('#idMssv').val(bangDiem.mssv)
         $('#idHoTen').val(bangDiem.hoVaTen)
-        $('#idMonHoc').val(bangDiem.monHoc)
-        $('#idHocKy').val(bangDiem.hocKi)
+        $('#idMonHoc').val(bangDiem.maMonHoc)
+        $('#idHocKy').val(bangDiem.maHocKi)
         $('#idLanThi').val(bangDiem.lanThi)
         $('#idDiemThi').val(bangDiem.diemThi)
         this.setResult()
@@ -135,13 +158,11 @@ class BangDiem {
 
     setResult = () =>{
         let inputDiem = $('#idDiemThi').val()
-        if (inputDiem < 5 && inputDiem >= 0 && inputDiem !== '') {
+        if (inputDiem < 5 || !inputDiem) {
             $('#idKetQua').text("Rớt môn").attr('class', 'badge text-bg-danger fs-4').val("Failed")
-        } else if (inputDiem >=5 && inputDiem <= 10) {
-            $('#idKetQua').text("Qua môn").attr('class', 'badge text-bg-success fs-4').val("Passed")
-        } else {
-            $('#idKetQua').text("Kết quả").attr('class', 'badge text-bg-info fs-4')
+            return
         }
+        $('#idKetQua').text("Qua môn").attr('class', 'badge text-bg-success fs-4').val("Passed")
     }
 
     clearForm = () =>{
@@ -268,15 +289,6 @@ class BangDiem {
             })
             return false
         }
-        if (!$('#idHocKy').val()) {
-            Swal.fire({
-                title: 'Học Kỳ còn trống',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return false
-        }
         if (!$('#idLanThi').val()) {
             Swal.fire({
                 title: 'Lần thi còn trống',
@@ -286,7 +298,25 @@ class BangDiem {
             })
             return false
         }
+        if ($('#idLanThi').val() < 1 || $('#idLanThi').val() > 3) {
+            Swal.fire({
+                title: 'Lần thi không hợp lệ',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false
+        }
         if (!$('#idDiemThi').val()) {
+            Swal.fire({
+                title: 'Điểm thi không hợp lệ',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false
+        }
+        if(isNaN($('#idDiemThi').val()) || $('#idDiemThi').val() > 10 || $('#idDiemThi').val() < 0) {
             Swal.fire({
                 title: 'Điểm thi không hợp lệ',
                 icon: 'error',

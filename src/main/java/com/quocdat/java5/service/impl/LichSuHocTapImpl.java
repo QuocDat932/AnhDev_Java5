@@ -24,7 +24,7 @@ public class LichSuHocTapImpl implements LichSuHoctapService {
     private final SinhVienRepo sinhVienRepo;
 
     @Override
-    public List<LichSuHocTapM> getLichSuHocTapByMssv(String mssv) throws SQLException {
+    public List<LichSuHocTapM> getLichSuHocTapByMSSV(String mssv) throws SQLException {
         SinhVienE sinhVienE = sinhVienRepo.getSinhViensByMssv(mssv);
         List<LichSuHocTapE> lichSuHocTapE = repo.getLichSuHocTapByMssv(sinhVienE);
         return LichSuHocTapM.convertListLichSuHocTapEToListLichSuHocTapM(lichSuHocTapE);

@@ -36,18 +36,18 @@
                     </select>
                 </div>
                 <div class="col-md-1">
-                    <button class="btn btn-dark rounded rounded-circle" onclick="serviceSinhVien.fillterSinhVien()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-dark rounded rounded-circle" onclick="serviceSinhVien.filterSinhVien()"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
             <div>
                 <table class="table table-responsive table-bordered table-hover border-black" id="tableSinhVien">
                     <thead class="text-center">
-                    <th>No.</th>
-                    <th>MSSV</th>
-                    <th>Họ tên</th>
-                    <th>Chuyên ngành</th>
-                    <th>Giới tính</th>
-                    <th>Học kỳ</th>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">MSSV</th>
+                    <th class="text-center">Họ tên</th>
+                    <th class="text-center">Chuyên ngành</th>
+                    <th class="text-center">Giới tính</th>
+                    <th class="text-center">Học kỳ</th>
                     </thead>
                     <tbody class="tableSinhVien"></tbody>
                 </table>
@@ -71,7 +71,7 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="idHocKy" class="form-label fw-bold">Học kỳ</label>
-                        <input type="text" class="form-control" id="idHocKy">
+                        <select id="idHocKy" class="form-select"></select>
                     </div>
                 </div>
                 <div class="col-6">
@@ -100,7 +100,7 @@
             </div>
             <div class="mb-3 text-end">
                 <button class="btn btn-primary mb-3" onclick="serviceSinhVien.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
-                <button class="btn btn-success mb-3" id="btnCapNhat" onclick="serviceSinhVien.btnLuu_click()" disabled><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                <button class="btn btn-success mb-3" id="btnLuu" onclick="serviceSinhVien.btnLuu_click()" disabled><i class="fa-solid fa-download me-3"></i>Lưu</button>
                 <button class="btn btn-danger mb-3" id="btnXoa" onclick="serviceSinhVien.btnXoa_click()" disabled><i class="fa-solid fa-trash me-3"></i>Xóa</button>
             </div>
         </div>

@@ -25,11 +25,12 @@ public class LichSuHocTapApi {
         try {
             result.put("success", true);
             result.put("message", "Call API Success");
-            result.put("data", lichsuhoctapServ.getLichSuHocTapByMssv(mssv));
+            result.put("data", lichsuhoctapServ.getLichSuHocTapByMSSV(mssv));
         } catch (Exception e) {
             result.put("success", false);
             result.put("message", "Fail when call API /java05/lichsuhoctap-api/getLichSuHocTapByMSSV");
             result.put("data", null);
+            log.error("Fail When getLichSuHocTapByMSSV: ", e);
         }
         return ResponseEntity.ok(result);
     }
@@ -45,6 +46,7 @@ public class LichSuHocTapApi {
             result.put("success", false);
             result.put("message", "Fail when call API /java05/lichsuhoctap-api/getAllLichSuHocTap");
             result.put("data", null);
+            log.error("Fail When getAllLichSuHocTap: ", e);
         }
         return ResponseEntity.ok(result);
     }
@@ -60,8 +62,9 @@ public class LichSuHocTapApi {
             result.put("data", lichsuhoctapServ.getListLichSuHocTapByFilter(mssv, maMonHoc, ketQua));
         } catch (Exception e) {
             result.put("success", false);
-            result.put("message", "Fail when call API /java05/lichsuhoctap-api/getAllLichSuHocTap");
+            result.put("message", "Fail when call API /java05/lichsuhoctap-api/getListBangDiemByFilter");
             result.put("data", null);
+            log.error("Fail When getListBangDiemByFilter: ", e);
         }
         return ResponseEntity.ok(result);
     }
@@ -93,7 +96,7 @@ public class LichSuHocTapApi {
             result.put("success", false);
             result.put("message", "Fail when call API /java05/lichsuhoctap-api/deleteLichSuHocTapBySysId");
             result.put("data", null);
-            log.error("Fail When saveLichSuHocTap: ", e);
+            log.error("Fail When deleteLichSuHocTapBySysId: ", e);
         }
         return ResponseEntity.ok(result);
     }
