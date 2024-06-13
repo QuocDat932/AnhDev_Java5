@@ -14,7 +14,5 @@ public interface HocKiService {
 
     boolean existsHocKyByMaHk(String maHK);
 
-    HocKiM updateHocKi(HocKiDto hocky);
-
     List<HocKiM> getListHocKyByTime(String time);
 }

@@ -10,7 +10,7 @@ public interface LichSuHoctapService {
 
     List<LichSuHocTapM> getAllLichSuHocTap() throws SQLException;
 
-    List<LichSuHocTapM> getLichSuHocTapByMssv(String mssv) throws SQLException;
+    List<LichSuHocTapM> getLichSuHocTapByMSSV(String mssv) throws SQLException;
 
     LichSuHocTapM postSaveLichSuHocTap(LichSuHocTapDto lichSuHocTapDto) throws SQLException;
 

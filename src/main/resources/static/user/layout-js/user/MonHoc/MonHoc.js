@@ -8,8 +8,16 @@ class MonHoc {
         let param = {
             maMonHoc : $('#idFilterMaMonHoc').val()
         }
-        let {data : response} = await axios.get('/java05/monhoc-api/getAllMonHoc')
-        if (!response.success) {
+        let response;
+        if (param.maMonHoc) {
+            response = await axios.get("/java05/monhoc-api/getMonHocByMaMonHoc", { params: param });
+        } else {
+            response = await axios.get('/java05/monhoc-api/getAllMonHoc');
+        }
+
+        let { data } = response;
+
+        if (!data.success) {
             Swal.fire({
                 title: response.message,
                 icon: 'error',
@@ -18,12 +26,11 @@ class MonHoc {
             })
             return
         }
-        this.listMonHoc = response.data.map(e => ({
+        this.listMonHoc = data.data.map(e => ({
             maMonHoc : e.maMonHoc,
             tenMonHoc : e.tenMonHoc,
             soTinChi : e.soTinChi
         }))
-        // console.log(this.listMonHoc)
         this.createTableMonHoc()
     }
     createTableMonHoc = () => {
@@ -58,7 +65,6 @@ class MonHoc {
         let safe = this
         table.on('dblclick', 'tbody tr', function () {
             let data = table.row(this).data();
-            // console.log(data)
             safe.fillDataToForm({
                 maMonHoc : data[1],
                 tenMonHoc : data[2],
@@ -195,31 +201,6 @@ class MonHoc {
                 timer: 1500
             })
             await this.getListMonHoc();
-
-
         });
-    }
-    getMonHocByMaMonHoc = async () => {
-        let param = {
-            maMonHoc : $('#idFilterMaMonHoc').val()
-        }
-        let {data: response} = await axios.get("/java05/monhoc-api/getMonHocByMaMonHoc", {
-            params: param
-        })
-        if (!response.success) {
-            Swal.fire({
-                title: response.message,
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return
-        }
-        this.listMonHoc = response.data.map(e => ({
-            maMonHoc : e.maMonHoc,
-            tenMonHoc : e.tenMonHoc,
-            soTinChi : e.soTinChi
-        }))
-        this.createTableMonHoc()
     }
 }

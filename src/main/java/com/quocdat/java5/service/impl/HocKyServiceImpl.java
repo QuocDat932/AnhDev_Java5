@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class HocKyImpl implements HocKiService {
+public class HocKyServiceImpl implements HocKiService {
 
     private final HocKiRepo repo;
 
@@ -24,9 +24,7 @@ public class HocKyImpl implements HocKiService {
 
     @Override
     public int deleteHocKyByMaHocKy(String maHK){
-        System.out.println(maHK);
         if(existsHocKyByMaHk(maHK)){
-            System.out.println("chay");
             return repo.deleteHocKy(maHK);
         }else
             return 0;
@@ -34,24 +32,14 @@ public class HocKyImpl implements HocKiService {
 
     @Override
     public HocKiM saveHocKi(HocKiDto hocKiDto) {
-        if(!existsHocKyByMaHk(hocKiDto.getMaHk())){
-            return HocKiM.convertHocKyEToHocKyM(
-                    repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
-            );
-        }else {
-            return updateHocKi(hocKiDto);
-        }
+        return HocKiM.convertHocKyEToHocKyM(
+                repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto))
+        );
     }
 
     @Override
     public boolean existsHocKyByMaHk(String maHK) {
         return repo.existsHocKiByMaHk(maHK);
-    }
-
-    @Override
-    public HocKiM updateHocKi(HocKiDto hocKiDto) {
-        return HocKiM.convertHocKyEToHocKyM(
-                repo.save(HocKiConvert.convertHocKiDtoToHocKiE(hocKiDto)));
     }
 
     @Override

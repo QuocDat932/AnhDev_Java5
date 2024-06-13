@@ -14,7 +14,7 @@ public interface HocKiRepo extends JpaRepository<HocKiE, String> {
 
     @Transactional
     @Modifying
-    @Query(value = "Delete from hoc_ki h where h.ma_hk = ?1",nativeQuery = true)
+    @Query("DELETE FROM HocKiE h WHERE h.maHk = ?1")
     int deleteHocKy(String maHocKi);
 
     boolean existsHocKiByMaHk(String maHk);

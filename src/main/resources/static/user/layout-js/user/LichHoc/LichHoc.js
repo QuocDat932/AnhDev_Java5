@@ -40,8 +40,8 @@ class LichHoc {
                                    <td class="bg-transparent text-center">${index + 1}</td>
                                    <td class="bg-transparent text-center">${e.maHk}</td>  
                                    <td class="bg-transparent text-center">${e.tenHocKi}</td> 
-                                   <td class="bg-transparent text-center">${e.ngayBatDau}</td> 
-                                   <td class="bg-transparent text-center">${e.ngayKetThuc}</td> 
+                                   <td class="bg-transparent text-center">${this.formatDateToDisplay(new  Date(e.ngayBatDau))}</td> 
+                                   <td class="bg-transparent text-center">${this.formatDateToDisplay(new  Date(e.ngayKetThuc))}</td> 
                                </tr>`
         })
         let footer = `</tbody></table>`
@@ -61,14 +61,35 @@ class LichHoc {
             safe.fillDataToForm({
                 maHk: data[1],         // cột 1: maHk.
                 tenHocKi: data[2],     // cột 2: Học kỳ
-                ngayBatDau: data[3],   // cột 3: Ngày bắt đầu
-                ngayKetThuc: data[4]   // cột 4: Ngày kết thúc
+                ngayBatDau: (safe.formatDateForInput(safe.parseDateFromDisplay(data[3]))),   // cột 3: Ngày bắt đầu
+                ngayKetThuc: (safe.formatDateForInput(safe.parseDateFromDisplay(data[4])))   // cột 4: Ngày kết thúc
             });
         });
         this.fillDataToForm(this.listHocKy[0])
     }
 
+    formatDateForInput = (date) => {
+        let year = date.getFullYear();
+        let month = (date.getMonth()+1).toString().padStart(2 , '0');
+        let day = date.getDate().toString().padStart(2,'0');
+        return `${year}-${month}-${day}`;
+    }
+
+    parseDateFromDisplay = (dateString) => {
+        let [day, month, year] = dateString.split('/').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    formatDateToDisplay = (date) => {
+        let year = date.getFullYear();
+        let month = (date.getMonth()+1).toString().padStart(2 , '0');
+        let day = date.getDate().toString().padStart(2,'0');
+        return `${day}/${month}/${year}`;
+    }
+
     fillDataToForm = (hocKi) => {
+        console.log(hocKi.ngayBatDau)
+        console.log(hocKi.ngayKetThuc)
         $('#idMaHocKy').val(hocKi.maHk)
         $('#idTenHocKy').val(hocKi.tenHocKi)
         $('#idNgayBatDau').val(hocKi.ngayBatDau)
@@ -217,7 +238,6 @@ class LichHoc {
         let value = $('#idXacNhan').prop('checked')
         $('#idBtnLuu').prop('disabled', !value)
         $('#idBtnXoa').prop('disabled', !value)
-        $('#idBtnCapNhat').prop('disabled', !value)
 
         $('#idMaHocKy').prop('disabled', value)
         $('#idTenHocKy').prop('disabled', value)
