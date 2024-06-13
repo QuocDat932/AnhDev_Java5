@@ -17,7 +17,7 @@ public class MonHocApi {
     private final MonHocService monHocService;
 
     @GetMapping("/getAllMonHoc")
-    public ResponseEntity<?> doGetAllMonHoc() {
+    public ResponseEntity<?> getAllMonHoc() {
         HashMap<String, Object> result = new HashMap<>();
         try {
             result.put("success", true);
@@ -31,7 +31,7 @@ public class MonHocApi {
         return ResponseEntity.ok(result);
     }
     @GetMapping("/getMonHocByMaMonHoc")
-    public ResponseEntity<?> doGetMonHocByMaMonHoc(@RequestParam ("maMonHoc") String maMonHoc ) {
+    public ResponseEntity<?> getMonHocByMaMonHoc(@RequestParam ("maMonHoc") String maMonHoc ) {
         HashMap<String, Object> result = new HashMap<>();
 
         try {
@@ -46,12 +46,12 @@ public class MonHocApi {
         return ResponseEntity.ok(result);
     }
     @PostMapping("/postSaveMonHoc")
-    public ResponseEntity<?> doPostSaveMonHoc(@RequestBody MonHocDto monHoc){
+    public ResponseEntity<?> postSaveMonHoc(@RequestBody MonHocDto monHoc){
         HashMap<String, Object> result = new HashMap<>();
         try {
             result.put("success", true);
             result.put("message", "Call api Success!");
-            result.put("data", monHocService.SaveMonHoc(monHoc));
+            result.put("data", monHocService.postSaveMonHoc(monHoc));
         }catch (Exception e){
             result.put("success", false);
             result.put("message", "fail when Call api");
@@ -61,25 +61,11 @@ public class MonHocApi {
         return ResponseEntity.ok(result);
     }
     @DeleteMapping("/deleteByMaMonHoc")
-    public ResponseEntity<?> doDeleteByMaMonHoc(@RequestParam ("maMonHoc") String maMonHoc) {
+    public ResponseEntity<?> deleteByMaMonHoc(@RequestParam ("maMonHoc") String maMonHoc) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
         result.put("message", "Call api Success!");
         result.put("data", monHocService.deleteByMaMonHoc(maMonHoc));
         return ResponseEntity.ok(result);
     }
-//    @PostMapping("/postUpdateMonHoc")
-//    public ResponseEntity<?> doPostUpdateMonHoc(@RequestBody MonHocDto monHoc){
-//        HashMap<String, Object> result = new HashMap<>();
-//        try {
-//            result.put("success", true);
-//            result.put("message", "Call api Success!");
-//            result.put("data", monHocService.updateMonHoc(monHoc));
-//        }catch (Exception e){
-//            result.put("success", false);
-//            result.put("message", "fail when Call api");
-//            result.put("data", null);
-//        }
-//        return ResponseEntity.ok(result);
-//    }
 }

@@ -24,14 +24,8 @@ public class MonHocServiceImpl implements MonHocService {
     }
 
     @Override
-    public MonHocM SaveMonHoc(MonHocDto monHoc){
-        if(!existsMonHocByMaMonHoc(monHoc.getMaMonHoc())){
-            return MonHocM.convertMonHoctoMonHocM(
-                    monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
-            );
-        }else {
-            return updateMonHoc(monHoc);
-        }
+    public MonHocM postSaveMonHoc(MonHocDto monHoc){
+       return MonHocM.convertMonHoctoMonHocM(monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc)));
     }
 
     @Override
@@ -48,21 +42,5 @@ public class MonHocServiceImpl implements MonHocService {
     @Override
     public List<MonHocM> getMonHocByMaMonHoc(String maMonHoc) {
         return MonHocM.convertListMonHocToListMonHocM(monHocRepo.getMonHocByMaMonHoc(maMonHoc +"%"));
-    }
-
-    @Override
-    public boolean existsMonHocByMaMonHoc(String maMonHoc) {
-        return monHocRepo.existsMonHocByMaMonHoc(maMonHoc);
-    }
-
-    @Override
-    public MonHocM updateMonHoc(MonHocDto monHoc) {
-        if(existsMonHocByMaMonHoc(monHoc.getMaMonHoc())){
-            return MonHocM.convertMonHoctoMonHocM(
-                    monHocRepo.save(MonHocConvert.convertMonHocDtoToMonHocE(monHoc))
-            );
-        }else {
-            return null;
-        }
     }
 }

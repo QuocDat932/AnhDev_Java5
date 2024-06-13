@@ -25,15 +25,4 @@ public class ThongKeM {
    private long diem9;
    private long diem10;
 
-//   public ThongKeM(long tiLePass, long tiLeFail) {
-//      this.tiLePass = tiLePass;
-//      this.tiLeFail = tiLeFail;
-//   }
-//   public static ThongKeM convertLichSuHocTapEToThongKeM(LichSuHocTapE lichSuHocTapE){
-//      return ThongKeM.builder()
-//              .tiLePass(lichSuHocTapE.getTiLePass())
-//              .tiLeFail(lichSuHocTapE.getTileFail())
-//              .build();
-//   }
-
 }

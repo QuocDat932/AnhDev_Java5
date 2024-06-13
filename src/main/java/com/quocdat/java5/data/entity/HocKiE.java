@@ -35,7 +35,7 @@ public class HocKiE implements Serializable {
     private Date ngayKetThuc;
 
     @JsonCreator
-    public HocKiE(@JsonProperty("ma_hk") String maHk) {
+    public HocKiE(@JsonProperty("maHk") String maHk) {
         this.maHk = maHk;
     }
 }

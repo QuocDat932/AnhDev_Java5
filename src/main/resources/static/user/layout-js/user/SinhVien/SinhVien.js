@@ -1,6 +1,7 @@
 class SinhVien {
     listSinhVien = []
     listChuyenNganh = []
+    listHocKy = []
 
     loadInit = async () => {
         await this.getListSinhVien()
@@ -22,10 +23,31 @@ class SinhVien {
             hoVaTen : e.hoVaTen,
             chuyenNganh : e.chuyenNganh,
             gioiTinh : e.gioiTinh,
-            hocKy : e.hocKi.ma_hk
+            maHocKy : e.hocKi.maHk,
+            tenHocKy : e.hocKi.tenHocKi,
         }))
         await this.createSelectChuyenNganh()
+        await this.createSelectHocKy()
         this.createTableSinhVien()
+    }
+
+    createSelectHocKy = async  () => {
+        let {data : response} = await axios.get('/java05/hocki-api/getAllHocKy')
+        if (!response.success) {
+            Swal.fire({
+                title: response.message,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return
+        }
+        this.listHocKy = response.data
+        let select = ``
+        this.listHocKy.forEach((hocKi) =>{
+            select +=`<option value="${hocKi.maHk}">${hocKi.tenHocKi}</option>`
+        })
+        $('#idHocKy').html(select)
     }
 
     createTableSinhVien = () => {
@@ -40,7 +62,7 @@ class SinhVien {
                            <td class="bg-transparent text-center">${e.hoVaTen}</td> 
                            <td class="bg-transparent text-center">${e.chuyenNganh}</td> 
                            <td class="bg-transparent text-center">${e.gioiTinh? 'Nam' : 'Nữ'}</td> 
-                           <td class="bg-transparent text-center">${e.hocKy}</td> 
+                           <td class="bg-transparent text-center" value="${e.maHocKy}">${e.tenHocKy}</td> 
                        </tr>`
         })
         let footer = `</tbody></table>`
@@ -76,17 +98,17 @@ class SinhVien {
         }
         this.listChuyenNganh = response.data;
         let select = `<option value=""></option>`
-        this.listChuyenNganh.forEach((String, index) =>{
-            select +=`<option value="String">${String}</option>`
+        this.listChuyenNganh.forEach((maChuyenNganh) =>{
+            select +=`<option value="${maChuyenNganh}">${maChuyenNganh}</option>`
         })
         $('.form-select').html(select)
     }
 
-    fillterSinhVien = async () => {
+    filterSinhVien = async () => {
         let param = {
             mssv : $('#idFilterMssv').val(),
             hoVaTen : $('#idFilterTen').val(),
-            chuyenNganh : $('#idFilterChuyenNganh option:selected').text()
+            chuyenNganh : $('#idFilterChuyenNganh').val()
         }
         let {data: response} = await axios.get('/java05/sinhvien-api/getListSinhVienByFilter',
             {params: param})
@@ -95,9 +117,10 @@ class SinhVien {
             hoVaTen : e.hoVaTen,
             chuyenNganh : e.chuyenNganh,
             gioiTinh : e.gioiTinh,
-            hocKy : e.hocKi.ma_hk
-        }));
-        if (response.data.length === 0) {
+            maHocKy : e.hocKi.maHk,
+            tenHocKy : e.hocKi.tenHocKi,
+        }))
+        if (!response.data.length) {
             Swal.fire({
                 title: 'Không tìm thấy sinh viên',
                 icon: 'error',
@@ -113,12 +136,12 @@ class SinhVien {
         $('#idMssv').val(sinhVien.mssv)
         $('#idHoTen').val(sinhVien.hoVaTen)
         $('#idChuyenNganh').val(sinhVien.chuyenNganh)
-        $('#idHocKy').val(sinhVien.hocKy)
-        if(sinhVien.gioiTinh){
-            $('#idNam').prop('checked', true)
-        } else {
+        $('#idHocKy').val(sinhVien.maHocKy)
+        if(!sinhVien.gioiTinh){
             $('#idNu').prop('checked', true)
+            return
         }
+        $('#idNam').prop('checked', true)
     }
 
     clearForm = () => {
@@ -223,7 +246,7 @@ class SinhVien {
             })
             return false
         }
-        if ($('#idMssv').val().length >= 8) {
+        if ($('#idMssv').val().length > 7) {
             Swal.fire({
                 title: 'Mã số sinh viên quá dài',
                 icon: 'error',
@@ -244,16 +267,6 @@ class SinhVien {
         if (!$('#idChuyenNganh').val()) {
             Swal.fire({
                 title: 'Chuyên ngành còn trống',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return false
-        }
-
-        if (!$('#idHocKy').val()) {
-            Swal.fire({
-                title: 'Học Kỳ còn trống',
                 icon: 'error',
                 showConfirmButton: false,
                 timer: 1500

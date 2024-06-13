@@ -12,9 +12,6 @@ class ThongKe {
     }
 
     getListMonHoc = async () => {
-        let param = {
-           monHoc: $('#selectMonHoc').val()
-        }
         let { data: response } = await axios.get('/java05/monhoc-api/getAllMonHoc')
         if (!response.success) {
             Swal.fire({
@@ -41,9 +38,6 @@ class ThongKe {
         $('#selectMonHoc').html(option)
     }
     getListHocKy = async () => {
-        let param = {
-            hocKy: $('#selectHocKy').val()
-        }
         let { data: response } = await axios.get('/java05/hocki-api/getAllHocKy')
         if (!response.success) {
             Swal.fire({
@@ -143,7 +137,7 @@ class ThongKe {
         const data = {
             labels: Object.keys(this.dataBarChart),
             datasets: [{
-                label: 'Phổ Điểm Chart',
+                label: 'Phổ Điểm',
                 data: Object.values(this.dataBarChart),
                 backgroundColor: [
                     'rgba(58, 190, 249, 0.8)',
