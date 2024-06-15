@@ -282,6 +282,15 @@ class LichHoc {
             })
             return false
         }
+        if (new Date($('#idNgayBatDau').val()) > new Date($('#idNgayKetThuc').val())) {
+            Swal.fire({
+                title: 'Ngày bắt đầu không được bé hơn ngày kết thúc',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false
+        }
         return true
     }
 }

@@ -56,7 +56,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox"id="idXacNhan" onchange="serviceMonHoc.verifyForm()">
+                        <input class="form-check-input" type="checkbox"id="idXacNhan" onchange="serviceHome.verifyFrom()">
                         <label class="form-check-label" for="idXacNhan">
                             Xác nhận
                         </label>
@@ -64,9 +64,9 @@
                 </div>
                 <div class="mb-3 text-end">
                     <button class="btn btn-primary mb-3" onclick="serviceHome.clearForm()"><i class="fa-solid fa-rotate-right me-3"></i>Xóa form</button>
-                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(true)"><i class="fa-solid fa-download me-3"></i>Lưu</button>
-                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(false)"><i class="fa-solid fa-plus me-3"></i>Thêm</button>
-                    <button class="btn btn-danger mb-3"  onclick="serviceHome.deleteTask()"><i class="fa-solid fa-trash me-3"></i>Xóa</button>
+                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(true)" disabled id="btnSave"><i class="fa-solid fa-download me-3"></i>Lưu</button>
+                    <button class="btn btn-success mb-3" onclick="serviceHome.postSaveTask(false)" disabled id="btnAdd"><i class="fa-solid fa-plus me-3"></i>Thêm</button>
+                    <button class="btn btn-danger mb-3"  onclick="serviceHome.deleteTask()" disabled id="btnDelete"><i class="fa-solid fa-trash me-3"></i>Xóa</button>
                 </div>
             </div>
         </div>

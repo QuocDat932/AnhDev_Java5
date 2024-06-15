@@ -165,6 +165,8 @@ class Home {
         $('#taskName').val('')
         $('#taskDate').val('')
         $('#taskDesc').val('')
+        $('#idXacNhan').prop('checked', false)
+        this.verifyFrom()
     }
     postSaveTask = async (isUpdate) => {
         if (!this.validateForm()) {
@@ -253,7 +255,7 @@ class Home {
         e.preventDefault();
         let data = e.dataTransfer.getData("text");
         e.target.append(document.getElementById(data));
-        this.changeDayTask()
+        this.changeDayTask(document.getElementById(data), e.target.id.split('-')[1])
     }
     allowDropTask = (e) => {
         e.preventDefault()
@@ -262,7 +264,24 @@ class Home {
         this.showTaskDetail(e)
         e.dataTransfer.setData("text", e.target.id);
     }
-    changeDayTask = () => {
+    changeDayTask = (e, date) => {
+        let index = e.id.split('-')[1]
+        this.currentTask = this.listTask[index]
+        let month = this.month < 10 ? '0' + this.month : this.month
+        let day = date < 10 ? '0' + date : date
+        this.currentTask.date = this.year + '-' + month + '-' + day
+        $('#taskDate').val(this.currentTask.date)
+    }
+    verifyFrom = () => {
+        let value = $('#idXacNhan').prop('checked')
+        console.log(value)
+        $('#taskColor').prop('disabled', value)
+        $('#taskName').prop('disabled', value)
+        $('#taskDate').prop('disabled', value)
+        $('#taskDesc').prop('disabled', value)
 
+        $('#btnSave').prop('disabled', !value)
+        $('#btnAdd').prop('disabled', !value)
+        $('#btnDelete').prop('disabled', !value)
     }
 }
