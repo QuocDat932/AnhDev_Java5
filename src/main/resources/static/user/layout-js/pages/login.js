@@ -12,29 +12,45 @@ class Login {
     }
     btnLogin_click = async () => {
         if (!this.validateForm()) {
-            return
-        }
-        let dataLogin = {
-            tk : $('#username').val(),
-            mk : $('#password').val()
-        }
-        let {data : response} = await axios.get('java05/account-api/login',
-            { params : dataLogin }
-        )
-        if (!response.status) {
-            Swal.fire({
-                title : response.message,
-                text : 'Please check your username or password',
-                icon : 'error',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            $('body').removeClass('swal2-height-auto')
             return;
         }
-        localStorage.setItem('sys_id', response.data.sysId)
-        window.location.href = '/index'
-    }
+
+        const dataLogin = {
+            tk: $('#username').val(),
+            mk: $('#password').val()
+        };
+
+        try {
+            const response = await axios.post('/api/auth/login', dataLogin);
+
+            if (!response.data.token) {
+                Swal.fire({
+                    title: 'Login Failed',
+                    text: 'Please check your username or password',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                $('body').removeClass('swal2-height-auto');
+                return;
+            }
+
+            localStorage.setItem('sys_id', response.data.sysId);
+            window.location.href = '/index';
+        } catch (error) {
+            console.error('Login error:', error);
+            // Xử lý lỗi khi gọi API
+            Swal.fire({
+                title: 'Login Failed',
+                text: 'Failed to login. Please try again later.',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            $('body').removeClass('swal2-height-auto');
+        }
+    };
+
     checkKeyPress = (event) => {
         if (event.key === 'Enter') {
             this.btnLogin_click()
